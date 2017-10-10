@@ -1,0 +1,36 @@
+page-signup {
+
+	ion-content{
+		text-align: center;
+	}
+	.item-ios{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.item-md{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	input{
+		border: 0px;
+		width: 100%;
+	}
+	ion-img{
+		padding-bottom: 50px;
+		padding-top: 60px;
+		width: 60%;
+		background-color: transparent;
+	}
+	#row-btn-2{
+		margin-bottom: 20px;
+		display: inline-block;
+
+	}
+	#loginBtn{
+	}
+	#col-btn-mail{
+		text-align: center;
+	}
+
+
+}

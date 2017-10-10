@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Timeline Neolynk</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-card class="text cards-job" *ngFor="let item of items | async">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20identite.jpg?alt=media&token=2887ab40-5c30-4bc6-9b10-20a01e69ff36">
+        </ion-avatar>
+        <h2>{{item.username}} {{item.surname}}</h2>
+        <p>Post date: {{item.date}}</p>
+      </ion-item>
+
+      <img src="assets/img/card.jpg">
+
+      <ion-card-content>
+        <p>Voici la nouvelles application communautaire pour tous les neolynkers.</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>28 j'aime</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="text" id="icon-eye"></ion-icon>
+            <div>62 commentaires</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+</ion-content>
+
+

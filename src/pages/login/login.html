@@ -1,0 +1,37 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/logo.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
+
+<ion-content padding>
+
+  <ion-img width="200" height="200" src="assets/img/logofindjob.png"></ion-img>
+
+  <!--Search graphic by <a href="http://www.flaticon.com/authors/icomoon">Icomoon</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>-->
+  
+  <form id="login-form">
+    
+    <ion-list>
+
+      <ion-item>
+        <input type="text" id="email" placeholder="Email">
+      </ion-item>
+
+      <ion-item>
+        <input type="password" id="password" placeholder="Password">
+      </ion-item>
+
+    </ion-list>
+    <div class="row" id="row-btn-3">
+      <button  ion-button  col-12  (click)="onClick()">Connexion</button>        
+    </div>
+
+  </form>
+
+  
+  <button ion-button clear (click)="goSignUp()">S'inscrire</button>
+
+</ion-content>
