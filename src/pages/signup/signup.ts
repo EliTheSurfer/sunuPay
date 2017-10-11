@@ -4,6 +4,8 @@ import { AuthService } from '../../providers/auth-service';
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
+import * as firebase from 'firebase';
+
 
 
 @Component({
@@ -24,7 +26,7 @@ export class SignUpPage implements OnInit{
 
  presentLoading() {
     this.loadingCtrl.create({
-      content: '<ion-spinner name="crescent"></ion-spinner> Please wait...',
+      content: '<ion-spinner name="crescent"></ion-spinner> Attendez quelques secondes ...',
       duration: 8000,
       dismissOnPageChange: true
     }).present();
@@ -32,7 +34,7 @@ export class SignUpPage implements OnInit{
 
   onSubmit(formData) {
     let loading = this.loadingCtrl.create({
-          content: '<ion-spinner name="crescent"></ion-spinner> Please wait...',
+          content: '<ion-spinner name="crescent"></ion-spinner> Attendez quelques secondes ...',
           duration: 4000,
           dismissOnPageChange: true
         }).present();
@@ -43,32 +45,41 @@ export class SignUpPage implements OnInit{
         email: formData.value.email,
         password: formData.value.password
       }).then(
-        (success) => {
+        (success) => { 
         console.log(success);
        
         this.alertCtrl.create({
-        title: 'Register Ok',
-        subTitle: 'In feew seconds you will recive the confirmation email',
+        title: 'Enregistrement OK',
+        subTitle: 'Dans quelques instants vous recevrez un email de confirmation',
         buttons: ['Ok']
       }).present();
+
+      firebase.auth().currentUser.sendEmailVerification().then(
+        (success) => {console.log("Un mail a ete envoye")} 
+      ); 
+    
+
+
+
         this.navCtrl.push(LoginPage);
       }).catch(
         (err) => {
         console.log(err);
         this.alertCtrl.create({
-          title: 'Register failed',
-          subTitle: 'The email address is already in use by another account.',
+          title: 'Echec de l enregistrement ',
+          subTitle: 'Cette adresse email est déjà utilisée par un autre compte',
           buttons: ['Ok']
         }).present();
         this.error = err;
       })
     }else{
       this.alertCtrl.create({
-        title: 'Register failed',
-        subTitle: 'Passwords are not iquals',
+        title: 'Echec de l enregistrement ',
+        subTitle: 'Les mots de passes ne sont pas les mêmes',
         buttons: ['Ok']
       }).present();
     }
+
   }
 
  ngOnInit(){

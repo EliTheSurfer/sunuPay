@@ -3,6 +3,8 @@ import { NavController, AlertController, LoadingController } from 'ionic-angular
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { TabsPage } from '../tabs/tabs';
 import { SignUpPage } from '../signup/signup';
+import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'page-login',
@@ -41,19 +43,23 @@ export class LoginPage implements OnInit{
  		method: AuthMethods.Password,
  	}).then(function(response){
      self.loadingCtrl.create({
-        content: '<ion-spinner name="crescent"></ion-spinner> Please wait...',
+        content: '<ion-spinner name="crescent"></ion-spinner> Attendez SVP ...',
         duration: 8000,
         dismissOnPageChange: true
       }).present();
- 		self.navCtrl.push(TabsPage);
+    console.log('Adresse email verifiee : ' + firebase.auth().currentUser.emailVerified);    
+    if(firebase.auth().currentUser.emailVerified === true) { 
+      self.navCtrl.push(TabsPage);
+    };            
  	}).catch(function(error){
      self.alertCtrl.create({
-        title: 'Login failed',
-        subTitle: 'Email or Password is incorrect',
+        title: 'Echec de la connexion',
+        subTitle: 'l email ou le  mot de passe est incorrect',
         buttons: ['Ok']
       }).present();
  		console.log('error');
- 	});
+   });
+   
  }
 
  onTwitterLogin(){
