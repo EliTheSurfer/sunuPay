@@ -50,7 +50,11 @@ export class LoginPage implements OnInit{
     console.log('Adresse email verifiee : ' + firebase.auth().currentUser.emailVerified);    
     if(firebase.auth().currentUser.emailVerified === true) { 
       self.navCtrl.push(TabsPage);
-    };            
+    }
+    else {
+      this.af.auth.logout();
+    }
+    ;            
  	}).catch(function(error){
      self.alertCtrl.create({
         title: 'Echec de la connexion',

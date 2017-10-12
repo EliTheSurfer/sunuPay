@@ -39,7 +39,12 @@ export class SignUpPage implements OnInit{
           dismissOnPageChange: true
         }).present();
     console.log(formData.value.password +' and '+ formData.value.repeatpassword);
-    if(formData.valid && formData.value.password == formData.value.repeatpassword) {
+    if(formData.valid && formData.value.email.indexOf('@neolynk.fr') >= 0) {
+      console.log('addresse neolynk valide');
+
+      
+    }
+    if(formData.valid && formData.value.password == formData.value.repeatpassword && formData.value.email.indexOf('@neolynk.fr') >= 0) {
       console.log(formData.value);
       this.af.auth.createUser({
         email: formData.value.email,
@@ -66,15 +71,22 @@ export class SignUpPage implements OnInit{
         (err) => {
         console.log(err);
         this.alertCtrl.create({
-          title: 'Echec de l enregistrement ',
+          title: "Echec de l'enregistrement ",
           subTitle: 'Cette adresse email est déjà utilisée par un autre compte',
           buttons: ['Ok']
         }).present();
         this.error = err;
       })
-    }else{
+    }else if ( formData.value.email.indexOf('@neolynk.fr') < 0 ){
       this.alertCtrl.create({
-        title: 'Echec de l enregistrement ',
+        title: "Echec de l'enregistrement ",
+        subTitle: 'Veuillez renseigner une adresse mail neolynk valide',
+        buttons: ['Ok']
+      }).present();
+    }
+    else{
+      this.alertCtrl.create({
+        title: "Echec de l'enregistrement ",
         subTitle: 'Les mots de passes ne sont pas les mêmes',
         buttons: ['Ok']
       }).present();
