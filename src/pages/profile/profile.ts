@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { AngularFire,AngularFireModule,AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 
 
 @Component({
@@ -9,8 +10,10 @@ import { LoginPage } from '../login/login';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, private app: App) {
+  profile : FirebaseListObservable<any[]>;
 
+  constructor(public navCtrl: NavController, private app: App, private af: AngularFire)  {
+    this.profile = af.database.list('/consultants');    
   }
 
   logout(){

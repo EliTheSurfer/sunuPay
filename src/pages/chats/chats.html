@@ -1,16 +1,32 @@
 <ion-header>
-  <ion-navbar color="primary" >
-    <ion-title>
+  
+  <ion-navbar color="primary"> 
+    <button ion-button id="sidemenu" class="nav-buttons">  
+        <ion-icon name="menu"></ion-icon>        
+    </button>
+      
+    <ion-title id="tabname">
       Chats
     </ion-title>
+
+    <button ion-button id="optionmenu" class="nav-buttons">  
+        <ion-icon name="menu"></ion-icon>        
+    </button>
   </ion-navbar>
+
+  <ion-navbar color="primary">      
+      <ion-searchbar placeholder="Chercher un neolynker">
+        <div class="searchbar-search-icon"></div>
+      </ion-searchbar>
+  </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
 
 <ion-list>
     <ion-list-header>
-      Recent Conversations
+      Conversations récentes
     </ion-list-header>
 
     <ion-item>
