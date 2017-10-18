@@ -8,106 +8,106 @@
 
 <ion-content>
 
-<ion-fab top right edge>
-    <button ion-fab mini color="secondary"><ion-icon name="more"></ion-icon></button>
-    <ion-fab-list>
-      <button ion-fab color="secondary"><ion-icon name="notifications"></ion-icon></button>
-      <button ion-fab color="secondary"><ion-icon name="mail"></ion-icon></button>
-      <button ion-fab color="secondary"><ion-icon name="key"></ion-icon></button>
-      <button ion-fab color="danger" (click)="logout()"><ion-icon name="log-out"></ion-icon></button>
-    </ion-fab-list>
-  </ion-fab>
-  
-  <ion-row>
-        <ion-col class="col-center">
-          <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20identite.jpg?alt=media&token=2887ab40-5c30-4bc6-9b10-20a01e69ff36" style="border-radius: 50%;width: 100px;height: 100px; ">
-        </ion-col>
-  </ion-row>
-  <ion-row>
-        <ion-col class="col-center">
-            <strong>Elimane Sall</strong>
-        </ion-col>
-  </ion-row>
-  <hr>
+  <ion-fab top right edge>
+      <button ion-fab mini color="secondary"><ion-icon name="more"></ion-icon></button>
+      <ion-fab-list>
+        <button ion-fab color="secondary"><ion-icon name="notifications"></ion-icon></button>
+        <button ion-fab color="secondary"><ion-icon name="mail"></ion-icon></button>
+        <button ion-fab color="secondary"><ion-icon name="key"></ion-icon></button>
+        <button ion-fab color="danger" (click)="logout()"><ion-icon name="log-out"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
 
-  <ion-list no-border>
+  <div *ngFor="let consultant of profile | async">
+    
+    <ion-row>
+          <ion-col class="col-center">
+            <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20identite.jpg?alt=media&token=2887ab40-5c30-4bc6-9b10-20a01e69ff36" style="border-radius: 50%;width: 100px;height: 100px; ">
+          </ion-col>
+    </ion-row>
+    <ion-row>
+          <ion-col class="col-center">
+              <strong>{{consultant.prenoms}} {{consultant.nom}}</strong>
+          </ion-col>
+    </ion-row>
+    <hr>
 
-    <ion-list-header>
-      Etudes
-    </ion-list-header>
+    <ion-list no-border>
 
-    <ion-item>
-      <ion-icon name='school' item-left></ion-icon>
-      Telecomunication<br>Engineer
-      <ion-note item-right>
-      2009-2014
-      </ion-note>
-    </ion-item>
+      <ion-list-header>
+        Etudes
+      </ion-list-header>
 
-    <ion-item>
-      <ion-icon name='school' item-left></ion-icon>
-      DUT GEII<br>
-      <ion-note item-right>
-      2015-2017
-      </ion-note>
-    </ion-item>
+      <div *ngFor="let school of schoolList | async">
+          <ion-item>
+              <ion-icon name='school' item-left></ion-icon>
+              <b>{{school.ecole}}</b><br> {{school.titre}}
+              <ion-note item-right>
+              {{school.date}}
+              </ion-note>
+          </ion-item>
+      </div>
 
 
-
-  </ion-list>
-
-
-  <ion-list>
-
-    <ion-list-header>
-      Experience
-    </ion-list-header>
-
-    <ion-item>
-      Ernst&Young
-      <ion-icon name='briefcase' item-left></ion-icon>
-      <ion-note item-right>2015-2017</ion-note>
-    </ion-item>
-
-    <ion-item>
-      <ion-icon name='briefcase' item-left></ion-icon>
-      Finanzarel
-      <ion-note item-right>2009-2015</ion-note>
-    </ion-item>
+    </ion-list>
 
 
-  </ion-list>
+    <ion-list>
 
-  <ion-list>
+      <ion-list-header>
+        Experience
+      </ion-list-header>
 
-    <ion-list-header>
-      Autres
-    </ion-list-header>
+      <ion-item>
+        Ernst&Young
+        <ion-icon name='briefcase' item-left></ion-icon>
+        <ion-note item-right>2015-2017</ion-note>
+      </ion-item>
 
-    <ion-item>
-      <ion-icon name='car' item-left></ion-icon>
-      Permis B
-      <ion-note item-right></ion-note>
-    </ion-item>
+      <ion-item>
+        <ion-icon name='briefcase' item-left></ion-icon>
+        Finanzarel
+        <ion-note item-right>2009-2015</ion-note>
+      </ion-item>
 
-    <ion-item>
-      <ion-icon name='american-football' item-left></ion-icon>
-      Football
-      <ion-note item-right></ion-note>
-    </ion-item>
 
-    <ion-item>
-      <ion-icon name='people' item-left></ion-icon>
-      Amis
-      <ion-note item-right></ion-note>
-    </ion-item>
+    </ion-list>
 
-    <ion-item>
-      <ion-icon name='book' item-left></ion-icon>
-      Lecture
-      <ion-note item-right></ion-note>
-    </ion-item>
+    <ion-list>
 
-  </ion-list>
+      <ion-list-header>
+        Autres
+      </ion-list-header>
 
+      <ion-item>
+        <ion-icon name='car' item-left></ion-icon>
+        Permis B
+        <ion-note item-right></ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='american-football' item-left></ion-icon>
+        Football
+        <ion-note item-right></ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='people' item-left></ion-icon>
+        Amis
+        <ion-note item-right></ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name='book' item-left></ion-icon>
+        Lecture
+        <ion-note item-right></ion-note>
+      </ion-item>
+
+    </ion-list>
+
+
+
+
+
+  </div>
 </ion-content>

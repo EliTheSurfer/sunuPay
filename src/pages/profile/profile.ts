@@ -11,9 +11,11 @@ import { AngularFire,AngularFireModule,AuthProviders, AuthMethods, FirebaseListO
 export class ProfilePage {
 
   profile : FirebaseListObservable<any[]>;
-
+  schoolList : FirebaseListObservable<any[]>;
+  
   constructor(public navCtrl: NavController, private app: App, private af: AngularFire)  {
     this.profile = af.database.list('/consultants');    
+    this.schoolList = af.database.list('/consultants/id/Etudes');    
   }
 
   logout(){
