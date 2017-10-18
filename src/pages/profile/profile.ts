@@ -12,10 +12,13 @@ export class ProfilePage {
 
   profile : FirebaseListObservable<any[]>;
   schoolList : FirebaseListObservable<any[]>;
+  workList : FirebaseListObservable<any[]>;
   
   constructor(public navCtrl: NavController, private app: App, private af: AngularFire)  {
     this.profile = af.database.list('/consultants');    
-    this.schoolList = af.database.list('/consultants/id/Etudes');    
+    this.schoolList = af.database.list('/consultants/id/Etudes'); 
+    this.workList = af.database.list('/consultants/id/Experiences'); 
+
   }
 
   logout(){

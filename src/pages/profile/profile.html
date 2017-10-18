@@ -32,6 +32,16 @@
     </ion-row>
     <hr>
 
+    <ion-list no-border>  
+      <ion-list-header>
+        Tribu 
+      </ion-list-header>
+      <ion-item>
+          <ion-icon name='ios-people' item-left></ion-icon>
+          <ion-note> {{consultant.tribu}} </ion-note>    
+      </ion-item>
+   </ion-list>
+
     <ion-list no-border>
 
       <ion-list-header>
@@ -41,7 +51,8 @@
       <div *ngFor="let school of schoolList | async">
           <ion-item>
               <ion-icon name='school' item-left></ion-icon>
-              <b>{{school.ecole}}</b><br> {{school.titre}}
+              {{school.ecole}}<br> 
+              <ion-note> {{school.titre}} </ion-note>
               <ion-note item-right>
               {{school.date}}
               </ion-note>
@@ -58,18 +69,13 @@
         Experience
       </ion-list-header>
 
-      <ion-item>
-        Ernst&Young
-        <ion-icon name='briefcase' item-left></ion-icon>
-        <ion-note item-right>2015-2017</ion-note>
-      </ion-item>
-
-      <ion-item>
-        <ion-icon name='briefcase' item-left></ion-icon>
-        Finanzarel
-        <ion-note item-right>2009-2015</ion-note>
-      </ion-item>
-
+      <div *ngFor="let work of workList | async">
+          <ion-item>
+              {{work.societe}} <br> {{work.poste}}
+              <ion-icon name='briefcase' item-left></ion-icon>
+              <ion-note item-right>{{work.date}}</ion-note>
+          </ion-item>
+      </div>
 
     </ion-list>
 
