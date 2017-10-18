@@ -16,8 +16,16 @@ export class ProfilePage {
   
   constructor(public navCtrl: NavController, private app: App, private af: AngularFire)  {
     this.profile = af.database.list('/consultants');    
-    this.schoolList = af.database.list('/consultants/id/Etudes'); 
-    this.workList = af.database.list('/consultants/id/Experiences'); 
+    this.schoolList = af.database.list('/consultants/id/Etudes', {
+      query: {
+        orderByChild: 'date'
+      }
+    }); 
+    this.workList = af.database.list('/consultants/id/Experiences', {
+      query: {
+        orderByChild: 'date'
+      }
+    }); 
 
   }
 

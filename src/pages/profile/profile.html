@@ -27,7 +27,8 @@
     </ion-row>
     <ion-row>
           <ion-col class="col-center">
-              <strong>{{consultant.prenoms}} {{consultant.nom}}</strong>
+              <strong>{{consultant.prenoms}} {{consultant.nom}}</strong> <br>
+              <ion-note> agriculteur </ion-note>
           </ion-col>
     </ion-row>
     <hr>
@@ -48,7 +49,7 @@
         Etudes
       </ion-list-header>
 
-      <div *ngFor="let school of schoolList | async">
+      <div *ngFor="let school of (schoolList | async)?.reverse()">
           <ion-item>
               <ion-icon name='school' item-left></ion-icon>
               {{school.ecole}}<br> 
@@ -69,7 +70,7 @@
         Experience
       </ion-list-header>
 
-      <div *ngFor="let work of workList | async">
+      <div *ngFor="let work of (workList | async)?.reverse()">
           <ion-item>
               {{work.societe}} <br> {{work.poste}}
               <ion-icon name='briefcase' item-left></ion-icon>
