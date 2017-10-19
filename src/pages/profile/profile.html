@@ -22,11 +22,11 @@
     
     <ion-row>
           <ion-col class="col-center">
-            <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20identite.jpg?alt=media&token=2887ab40-5c30-4bc6-9b10-20a01e69ff36" style="border-radius: 50%;width: 100px;height: 100px; ">
+            <img src={{consultant.photoDeProfil}} style="border-radius: 50%;width: 100px;height: 100px; ">
           </ion-col>
     </ion-row>
     <ion-row>
-          <ion-col class="col-center">
+          <ion-col class="col-center"  style="font-size : medium;">
               <strong>{{consultant.prenoms}} {{consultant.nom}}</strong> <br>
               <ion-note> {{consultant.poste.titre}} 
                 <br> chez {{consultant.poste.societe}}
@@ -162,7 +162,7 @@
             </ion-item>
 
             <ion-item>
-                <ion-icon name='ios-call-outline' item-left></ion-icon>
+                <ion-icon name='ios-call-outline'  (click)="call(consultant.telephone)" item-left></ion-icon>
                 {{consultant.telephone}}
                 <ion-note item-right></ion-note>
             </ion-item>

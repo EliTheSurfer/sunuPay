@@ -18,11 +18,13 @@
     "@angular/http": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
+    "@ionic-native/call-number": "^4.3.2",
     "@ionic-native/core": "3.4.2",
     "@ionic-native/splash-screen": "3.4.2",
     "@ionic-native/status-bar": "3.4.2",
     "@ionic/storage": "2.0.1",
     "angularfire2": "^2.0.0-beta.8",
+    "call-number": "^1.0.1",
     "firebase": "^3.7.5",
     "ionic-angular": "3.0.1",
     "ionicons": "3.0.0",
@@ -50,5 +52,10 @@
       "locator": "ios"
     }
   ],
-  "description": "FindJob: An Ionic project"
+  "description": "FindJob: An Ionic project",
+  "cordova": {
+    "plugins": {
+      "mx.ferreyra.callnumber": {}
+    }
+  }
 }

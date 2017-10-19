@@ -7,14 +7,14 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color:ghostwhite;">
   <ion-list>
       <ion-card class="text cards-job" *ngFor="let item of items | async">
       <ion-item>
         <ion-avatar item-left>
-          <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20identite.jpg?alt=media&token=2887ab40-5c30-4bc6-9b10-20a01e69ff36">
+          <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20d%20identite%20formatee.jpg?alt=media&token=2321fa9d-0aab-4dad-87bd-26099474c087">
         </ion-avatar>
-        <h2>{{item.username}} {{item.surname}}</h2>
+        <h2>{{item.username}} {{item.lastname}}</h2>
         <p>Post date: {{item.date}}</p>
       </ion-item>
 
