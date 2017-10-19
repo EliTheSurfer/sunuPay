@@ -13,7 +13,8 @@ export class MyJobsPage {
   consultants : FirebaseListObservable<any[]>;
   
   constructor(public navCtrl: NavController, private af: AngularFire) {
-    this.consultants = af.database.list('/consultants');    
+    this.consultants = af.database.list('/consultants');
+    console.log(this.consultants);    
     
   }
 

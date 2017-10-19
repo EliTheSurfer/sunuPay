@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Les neolynkers
+    </ion-title>
+  </ion-navbar>
+
+  <ion-navbar color="primary">      
+    <ion-searchbar placeholder="Chercher un neolynker">
+      <div class="searchbar-search-icon"></div>
+    </ion-searchbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item *ngFor="let profil of consultants | async">
+      <ion-thumbnail item-left>
+        <img src={{profil.photoDeProfil}}>
+      </ion-thumbnail>
+      <h2>{{profil.prenoms}} {{profil.nom}}</h2>
+      <p>{{profil.poste.societe}} • {{profil.poste.titre}}</p>
+      <button ion-button clear item-right>voir</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
