@@ -18,158 +18,159 @@
       </ion-fab-list>
     </ion-fab>
 
-  <div *ngFor="let consultant of profile | async" style=" background-color :ghostwhite;">
+
+  <div *ngFor="let consultant of profile | async "  style=" background-color :ghostwhite;" >
+    <div *ngIf="consultant.mail === userLogin.email ">
+      <ion-row>
+            <ion-col class="col-center">
+                <img src={{consultant.photoDeProfil}} style="border-radius: 50%;width: 100px;height: 100px; ">              
+            </ion-col>
+      </ion-row>
+      <ion-row>
+            <ion-col class="col-center"  style="font-size : medium;">
+                <strong>{{consultant.prenoms}} {{consultant.nom}}</strong> <br>
+                <ion-note> {{consultant.poste.titre}} 
+                  <br> chez {{consultant.poste.societe}}
+                </ion-note>
+            </ion-col>
+      </ion-row>
+      <hr>
+
+      <ion-card>
+        <ion-list no-border>  
+          <ion-list-header>
+            Tribu 
+          </ion-list-header>
+          <ion-item>
+              <ion-icon name='ios-people' item-left></ion-icon>
+              {{consultant.tribu}}    
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card>
+          <ion-list>
     
-    <ion-row>
-          <ion-col class="col-center">
-            <img src={{consultant.photoDeProfil}} style="border-radius: 50%;width: 100px;height: 100px; ">
-          </ion-col>
-    </ion-row>
-    <ion-row>
-          <ion-col class="col-center"  style="font-size : medium;">
-              <strong>{{consultant.prenoms}} {{consultant.nom}}</strong> <br>
-              <ion-note> {{consultant.poste.titre}} 
-                <br> chez {{consultant.poste.societe}}
-              </ion-note>
-          </ion-col>
-    </ion-row>
-    <hr>
-
-    <ion-card>
-      <ion-list no-border>  
-        <ion-list-header>
-          Tribu 
-        </ion-list-header>
-        <ion-item>
-            <ion-icon name='ios-people' item-left></ion-icon>
-            {{consultant.tribu}}    
-        </ion-item>
-      </ion-list>
-    </ion-card>
-
-    <ion-card>
-        <ion-list>
-  
-          <ion-list-header>
-            Compétences
-          </ion-list-header>
-  
-          <ion-item>
-            <ion-icon name='ios-construct' item-left></ion-icon>
-            JAVA 8, Angular , Groovy
-            <ion-note item-right></ion-note>
-          </ion-item>
-  
-        </ion-list>
-      </ion-card>
-
-    <ion-card>
-        <ion-list no-border>
-
-          <ion-list-header>
-            Etudes
-          </ion-list-header>
-
-          <div *ngFor="let school of (schoolList | async)?.reverse()">
-              <ion-item>
-                  <ion-icon name='school' item-left></ion-icon>
-                  {{school.ecole}}<br> 
-                  <ion-note> {{school.titre}} </ion-note>
-                  <ion-note item-right>
-                  {{school.date}}
-                  </ion-note>
-              </ion-item>
-          </div>
-
-
-        </ion-list>
-    </ion-card>
-
-      <ion-card>
-        <ion-list>
-
-          <ion-list-header>
-            Experience
-          </ion-list-header>
-
-          <div *ngFor="let work of (workList | async)?.reverse()">
-              <ion-item>
-                  {{work.societe}} <br> {{work.poste}}
-                  <ion-icon name='briefcase' item-left></ion-icon>
-                  <ion-note item-right>{{work.date}}</ion-note>
-              </ion-item>
-          </div>
-
-        </ion-list>
-      </ion-card>
-
-      <ion-card>
-          <ion-list>
-      
             <ion-list-header>
-              Hobbies
+              Compétences
             </ion-list-header>
-      
+    
             <ion-item>
-              <ion-icon name='american-football' item-left></ion-icon>
-              Football
+              <ion-icon name='ios-construct' item-left></ion-icon>
+              JAVA 8, Angular , Groovy
               <ion-note item-right></ion-note>
             </ion-item>
-      
-            <ion-item>
-              <ion-icon name='people' item-left></ion-icon>
-              Amis
-              <ion-note item-right></ion-note>
-            </ion-item>
-      
-            <ion-item>
-              <ion-icon name='book' item-left></ion-icon>
-              Lecture
-              <ion-note item-right></ion-note>
-            </ion-item>
-      
-          </ion-list>
-      </ion-card>
-
-
-      <ion-card>
-        <ion-list>
-
-          <ion-list-header>
-            Autres
-          </ion-list-header>
-
-          <ion-item>
-            <ion-icon name='car' item-left></ion-icon>
-            Permis B
-            <ion-note item-right></ion-note>
-          </ion-item>
-
-        </ion-list>
-      </ion-card>
-
-      <ion-card>
-          <ion-list>
-  
-            <ion-list-header>
-              Contacts
-            </ion-list-header>
-  
-            <ion-item>
-              <ion-icon name='ios-mail-outline' item-left></ion-icon>
-                {{consultant.mail}}
-              <ion-note item-right></ion-note>
-            </ion-item>
-
-            <ion-item>
-                <ion-icon name='ios-call-outline'  (click)="call(consultant.telephone)" item-left></ion-icon>
-                {{consultant.telephone}}
-                <ion-note item-right></ion-note>
-            </ion-item>
-  
+    
           </ion-list>
         </ion-card>
-  
+
+      <ion-card>
+          <ion-list no-border>
+
+            <ion-list-header>
+              Etudes
+            </ion-list-header>
+
+            <div *ngFor="let school of (schoolList | async)?.reverse()">
+                <ion-item>
+                    <ion-icon name='school' item-left></ion-icon>
+                    {{school.ecole}}<br> 
+                    <ion-note> {{school.titre}} </ion-note>
+                    <ion-note item-right>
+                    {{school.date}}
+                    </ion-note>
+                </ion-item>
+            </div>
+
+
+          </ion-list>
+      </ion-card>
+
+        <ion-card>
+          <ion-list>
+
+            <ion-list-header>
+              Experience
+            </ion-list-header>
+
+            <div *ngFor="let work of (workList | async)?.reverse()">
+                <ion-item>
+                    {{work.societe}} <br> {{work.poste}}
+                    <ion-icon name='briefcase' item-left></ion-icon>
+                    <ion-note item-right>{{work.date}}</ion-note>
+                </ion-item>
+            </div>
+
+          </ion-list>
+        </ion-card>
+
+        <ion-card>
+            <ion-list>
+        
+              <ion-list-header>
+                Hobbies
+              </ion-list-header>
+        
+              <ion-item>
+                <ion-icon name='american-football' item-left></ion-icon>
+                Football
+                <ion-note item-right></ion-note>
+              </ion-item>
+        
+              <ion-item>
+                <ion-icon name='people' item-left></ion-icon>
+                Amis
+                <ion-note item-right></ion-note>
+              </ion-item>
+        
+              <ion-item>
+                <ion-icon name='book' item-left></ion-icon>
+                Lecture
+                <ion-note item-right></ion-note>
+              </ion-item>
+        
+            </ion-list>
+        </ion-card>
+
+
+        <ion-card>
+          <ion-list>
+
+            <ion-list-header>
+              Autres
+            </ion-list-header>
+
+            <ion-item>
+              <ion-icon name='car' item-left></ion-icon>
+              Permis B
+              <ion-note item-right></ion-note>
+            </ion-item>
+
+          </ion-list>
+        </ion-card>
+
+        <ion-card>
+            <ion-list>
+    
+              <ion-list-header>
+                Contacts
+              </ion-list-header>
+    
+              <ion-item>
+                <ion-icon name='ios-mail-outline' item-left></ion-icon>
+                  {{consultant.mail}}
+                <ion-note item-right></ion-note>
+              </ion-item>
+
+              <ion-item>
+                  <ion-icon name='ios-call-outline'  (click)="call(consultant.telephone)" item-left></ion-icon>
+                  {{consultant.telephone}}
+                  <ion-note item-right></ion-note>
+              </ion-item>
+    
+            </ion-list>
+          </ion-card>
+    </div>
   </div>
 
 

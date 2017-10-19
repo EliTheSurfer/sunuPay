@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFire,AngularFireModule,AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import * as firebase from 'firebase';
+
 
 
 
@@ -12,15 +15,15 @@ import { AngularFire,AngularFireModule,AuthProviders, AuthMethods, FirebaseListO
 export class ProfilePage {
 
   profile : FirebaseListObservable<any[]>;
+  consultant : FirebaseListObservable<any[]>;
   schoolList : FirebaseListObservable<any[]>;
   workList : FirebaseListObservable<any[]>;
-  userlogin : string;
+  userLogin : any;
   authState: any = null;
   
   
-  constructor(public navCtrl: NavController, private app: App, private af: AngularFire)  {
+  constructor(public navCtrl: NavController, public afAuth: AngularFireAuth, private app: App, private af: AngularFire)  {
     this.profile = af.database.list('/consultants');    
-    this.userlogin = this.authenticated ? this.authState.uid : '';
     this.schoolList = af.database.list('/consultants/id/Etudes', {
       query: {
         orderByChild: 'date'
@@ -31,6 +34,9 @@ export class ProfilePage {
         orderByChild: 'date'
       }
     }); 
+    this.userLogin = firebase.auth().currentUser;
+    console.log(this.userLogin.email);
+    
 
   }
 
