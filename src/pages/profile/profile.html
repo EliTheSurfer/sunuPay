@@ -20,7 +20,7 @@
 
 
   <div *ngFor="let consultant of profile | async "  style=" background-color :ghostwhite;" >
-    <div *ngIf="consultant.mail === userLogin.email ">
+    <div *ngIf="consultant.email === userLogin.email ">
       <ion-row>
             <ion-col class="col-center">
                 <img src={{consultant.photoDeProfil}} style="border-radius: 50%;width: 100px;height: 100px; ">              

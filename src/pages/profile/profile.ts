@@ -15,28 +15,30 @@ import * as firebase from 'firebase';
 export class ProfilePage {
 
   profile : FirebaseListObservable<any[]>;
-  consultant : FirebaseListObservable<any[]>;
   schoolList : FirebaseListObservable<any[]>;
   workList : FirebaseListObservable<any[]>;
+  skillList : FirebaseListObservable<any[]>;
   userLogin : any;
+  userId : string;
   authState: any = null;
   
   
   constructor(public navCtrl: NavController, public afAuth: AngularFireAuth, private app: App, private af: AngularFire)  {
-    this.profile = af.database.list('/consultants');    
-    this.schoolList = af.database.list('/consultants/id/Etudes', {
-      query: {
-        orderByChild: 'date'
-      }
-    }); 
-    this.workList = af.database.list('/consultants/id/Experiences', {
-      query: {
-        orderByChild: 'date'
-      }
-    }); 
+    this.profile = af.database.list('/consultants'); 
     this.userLogin = firebase.auth().currentUser;
-    console.log(this.userLogin.email);
-    
+    this.userId = this.userLogin.email.split("@")[0].replace(".","");
+    console.log(this.userId);        
+    this.schoolList = af.database.list('/consultants/'+this.userId+'/etudes', {
+      query: {
+        orderByChild: 'date'
+      }
+    }); 
+    this.workList = af.database.list('/consultants/'+this.userId+'/experiences', {
+      query: {
+        orderByChild: 'date'
+      }
+    }); 
+    //this.skillList =  this.profile = af.database.list('/consultants/'+this.userId+'/competences');  
 
   }
 

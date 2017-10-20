@@ -6,7 +6,7 @@
   </ion-navbar>
 
   <ion-navbar color="primary">      
-    <ion-searchbar placeholder="Chercher un neolynker">
+    <ion-searchbar placeholder="Chercher un neolynker" #listFilter (keyup)="0">
       <div class="searchbar-search-icon"></div>
     </ion-searchbar>
   </ion-navbar>
@@ -14,9 +14,10 @@
 </ion-header>
 
 <ion-content>
+    
   <ion-list>
 
-    <ion-item *ngFor="let profil of consultants | async">
+    <ion-item *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">
       <ion-thumbnail item-left>
         <img src={{profil.photoDeProfil}}>
       </ion-thumbnail>

@@ -1,3 +1,4 @@
+import { ConsultantPipe } from './../pipe/consultantFilter';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -38,6 +39,7 @@ export const firebaseConfig = {
     MyJobsPage,
     LoginPage,
     SignUpPage,
+    ConsultantPipe,
     TabsPage
   ],
   imports: [
