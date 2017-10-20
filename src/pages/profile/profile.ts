@@ -27,7 +27,6 @@ export class ProfilePage {
     this.profile = af.database.list('/consultants'); 
     this.userLogin = firebase.auth().currentUser;
     this.userId = this.userLogin.email.split("@")[0].replace(".","");
-    console.log(this.userId);        
     this.schoolList = af.database.list('/consultants/'+this.userId+'/etudes', {
       query: {
         orderByChild: 'date'
@@ -38,8 +37,9 @@ export class ProfilePage {
         orderByChild: 'date'
       }
     }); 
-    //this.skillList =  this.profile = af.database.list('/consultants/'+this.userId+'/competences');  
-
+    this.skillList = af.database.list('/consultants/'+this.userId+'/competences'); 
+      
+  
   }
 
   logout(){
