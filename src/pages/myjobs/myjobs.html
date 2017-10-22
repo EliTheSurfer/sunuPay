@@ -23,7 +23,7 @@
       </ion-thumbnail>
       <h2>{{profil.prenoms}} {{profil.nom}}</h2>
       <p>{{profil.poste.societe}} • {{profil.poste.titre}}</p>
-      <button ion-button clear item-right>voir</button>
+      <button ion-button clear item-right (click)='goToConsultantDetails(profil)'>voir</button>
     </ion-item>
 
   </ion-list>

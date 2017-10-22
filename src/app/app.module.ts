@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { MyJobsPage } from '../pages/myjobs/myjobs';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/signup/signup';
+import { ProfileDetailsPage } from '../pages/profile-details/profile-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,7 +41,8 @@ export const firebaseConfig = {
     LoginPage,
     SignUpPage,
     ConsultantPipe,
-    TabsPage
+    TabsPage,
+    ProfileDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ export const firebaseConfig = {
     MyJobsPage,
     LoginPage,
     SignUpPage,
+    ProfileDetailsPage,
     TabsPage
   ],
   providers: [

@@ -44,7 +44,7 @@ export class ProfilePage {
     this.skillList = af.database.list('/consultants/'+this.userId+'/competences'); 
 
     
-    // Get a reference to our the hobbies
+    // Get a reference to the hobbies
     this.hobbies = [];
     let instance = this;
     let ref = firebase.database().ref('/consultants/'+this.userId+'/hobbies');
@@ -52,7 +52,6 @@ export class ProfilePage {
     // Get the hobbies
     ref.on("child_added", function(snapshot) {
       instance.hobbies.push(snapshot.val());
-      console.log(instance.hobbies );
     });
       
   
