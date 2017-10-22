@@ -110,25 +110,14 @@
               <ion-list-header>
                 Hobbies
               </ion-list-header>
-        
-              <ion-item>
-                <ion-icon name='ios-heart' item-left></ion-icon>
-                Football
-                <ion-note item-right></ion-note>
-              </ion-item>
-        
-              <ion-item>
-                <ion-icon name='people' item-left></ion-icon>
-                Amis
-                <ion-note item-right></ion-note>
-              </ion-item>
-        
-              <ion-item>
-                <ion-icon name='book' item-left></ion-icon>
-                Lecture
-                <ion-note item-right></ion-note>
-              </ion-item>
-        
+              
+              <div *ngFor="let hobby of hobbies">
+                <ion-item>
+                  <ion-icon name='ios-heart' item-left></ion-icon>
+                  {{hobby}}
+                  <ion-note item-right></ion-note>
+                </ion-item>
+              </div>
             </ion-list>
         </ion-card>
 

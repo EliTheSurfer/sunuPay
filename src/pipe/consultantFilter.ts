@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform, Injectable, Component} from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
     name: 'consultantFilter'
@@ -13,9 +13,8 @@ export class ConsultantPipe implements PipeTransform {
            (v.poste.titre.toLowerCase().indexOf(filter.toLowerCase()) !== -1) ||           
            (v.poste.societe.toLowerCase().indexOf(filter.toLowerCase()) !== -1) ||                       
            (v.prenoms.toLowerCase().indexOf(filter.toLowerCase()) !== -1));
-         return items;
-      } else {
-          return items;
-      }
+      } 
+      return items;
+      
     }
 }

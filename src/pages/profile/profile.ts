@@ -18,6 +18,7 @@ export class ProfilePage {
   schoolList : FirebaseListObservable<any[]>;
   workList : FirebaseListObservable<any[]>;
   skillList : FirebaseListObservable<any[]>;
+  hobbies : string[];
   userLogin : any;
   userId : string;
   authState: any = null;
@@ -26,7 +27,10 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public afAuth: AngularFireAuth, private app: App, private af: AngularFire)  {
     this.profile = af.database.list('/consultants'); 
     this.userLogin = firebase.auth().currentUser;
+
+    //Formattage de l'id de l'utilisateur courant
     this.userId = this.userLogin.email.split("@")[0].replace(".","");
+
     this.schoolList = af.database.list('/consultants/'+this.userId+'/etudes', {
       query: {
         orderByChild: 'date'
@@ -38,6 +42,18 @@ export class ProfilePage {
       }
     }); 
     this.skillList = af.database.list('/consultants/'+this.userId+'/competences'); 
+
+    
+    // Get a reference to our the hobbies
+    this.hobbies = [];
+    let instance = this;
+    let ref = firebase.database().ref('/consultants/'+this.userId+'/hobbies');
+
+    // Get the hobbies
+    ref.on("child_added", function(snapshot) {
+      instance.hobbies.push(snapshot.val());
+      console.log(instance.hobbies );
+    });
       
   
   }
