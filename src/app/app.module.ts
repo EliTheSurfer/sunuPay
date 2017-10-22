@@ -46,7 +46,16 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,
+    {
+      backButtonText: 'retour',
+      iconMode: 'ios',
+      modalEnter: 'modal-slide-in',
+      modalLeave: 'modal-slide-out',
+      tabsPlacement: 'bottom',
+      pageTransition: 'ios'
+    }),
+
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],

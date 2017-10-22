@@ -13,6 +13,144 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style=" background-color :ghostwhite;">
+
+      <ion-row>
+            <ion-col class="col-center">
+                <img src={{profil.photoDeProfil}} style="border-radius: 50%;width: 100px;height: 100px; ">              
+            </ion-col>
+      </ion-row>
+      <ion-row>
+            <ion-col class="col-center"  style="font-size : medium;">
+                <ion-note> {{profil.poste.titre}} 
+                  <br> chez {{profil.poste.societe}}
+                </ion-note>
+            </ion-col>
+      </ion-row>
+      <hr>
+
+      <ion-card>
+        <ion-list no-border>  
+          <ion-list-header>
+            Tribu 
+          </ion-list-header>
+          <ion-item>
+              <ion-icon name='ios-people' item-left></ion-icon>
+              {{profil.tribu}}    
+          </ion-item>
+        </ion-list>
+      </ion-card>
+
+      <ion-card>
+          <ion-list>
+    
+            <ion-list-header>
+              Compétences
+            </ion-list-header>
+    
+            <ion-item>
+              <ion-icon name='ios-construct' item-left></ion-icon>
+                {{profil.competences}}
+              <ion-note item-right></ion-note>
+            </ion-item>
+    
+          </ion-list>
+        </ion-card>
+
+      <ion-card>
+          <ion-list no-border>
+
+            <ion-list-header>
+              Etudes
+            </ion-list-header>
+
+            <div *ngFor="let school of (schoolList | async)?.reverse()">
+                <ion-item>
+                    <ion-icon name='school' item-left></ion-icon>
+                    {{school.ecole}}<br> 
+                    <ion-note> {{school.titre}} </ion-note>
+                    <ion-note item-right>
+                    {{school.date}}
+                    </ion-note>
+                </ion-item>
+            </div>
+
+
+          </ion-list>
+      </ion-card>
+
+        <ion-card>
+          <ion-list>
+
+            <ion-list-header>
+              Experience
+            </ion-list-header>
+
+            <div *ngFor="let work of (workList | async)?.reverse()">
+                <ion-item>
+                    {{work.societe}} <br> {{work.poste}}
+                    <ion-icon name='briefcase' item-left></ion-icon>
+                    <ion-note item-right>{{work.date}}</ion-note>
+                </ion-item>
+            </div>
+
+          </ion-list>
+        </ion-card>
+
+        <ion-card>
+            <ion-list>
+        
+              <ion-list-header>
+                Hobbies
+              </ion-list-header>
+              
+              <div *ngFor="let hobby of hobbies">
+                <ion-item>
+                  <ion-icon name='ios-heart' item-left></ion-icon>
+                  {{hobby}}
+                  <ion-note item-right></ion-note>
+                </ion-item>
+              </div>
+            </ion-list>
+        </ion-card>
+
+
+        <ion-card>
+          <ion-list>
+
+            <ion-list-header>
+              Autres
+            </ion-list-header>
+
+            <ion-item>
+              <ion-icon name='car' item-left></ion-icon>
+              Permis B
+              <ion-note item-right></ion-note>
+            </ion-item>
+
+          </ion-list>
+        </ion-card>
+
+        <ion-card>
+            <ion-list>
+    
+              <ion-list-header>
+                Contacts
+              </ion-list-header>
+    
+              <ion-item>
+                <ion-icon name='ios-mail-outline' item-left></ion-icon>
+                  {{profil.email}}
+                <ion-note item-right></ion-note>
+              </ion-item>
+
+              <ion-item>
+                  <ion-icon name='ios-call-outline'  (click)="call(consultant.telephone)" item-left></ion-icon>
+                  {{profil.telephone}}
+                  <ion-note item-right></ion-note>
+              </ion-item>
+    
+            </ion-list>
+          </ion-card>
 
 </ion-content>
