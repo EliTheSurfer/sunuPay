@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <ion-icon name="ios-create"></ion-icon>      
+      <ion-icon name="ios-create-outline"style></ion-icon>      
     </ion-buttons>
 
   </ion-navbar>
@@ -20,7 +20,7 @@
           <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20d%20identite%20formatee.jpg?alt=media&token=2321fa9d-0aab-4dad-87bd-26099474c087">
         </ion-avatar>
         <h2>{{item.username}} {{item.lastname}}</h2>
-        <p>Post date: {{item.date}}</p>
+        <p>Posté le : {{item.date}}</p>
       </ion-item>
 
       <img src="assets/img/card.jpg">
@@ -45,6 +45,43 @@
       </ion-row>
     </ion-card>
   </ion-list>
+  
+
+
+  <ion-list>
+      <ion-card class="text cards-job" *ngFor="let post of timeline | async">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{post.photoDeProfil}}">
+        </ion-avatar>
+        <h2>{{post.prenoms}}  {{post.nom}}</h2>
+        <p>Posté le : 31/10/2017</p>
+      </ion-item>
+
+
+      <ion-card-content>
+        <p>{{post.texte}}</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{post.like}} j'aime</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="text" id="icon-eye"></ion-icon>
+            <div>{{post.commentaire}} commentaires</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+
+
 </ion-content>
 
 

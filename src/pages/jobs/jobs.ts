@@ -12,10 +12,14 @@ import { LoginPage } from '../login/login';
 })
 export class JobsPage {
 
+  timeline : FirebaseListObservable<any[]>;  
+
 	items: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService) {
-  	this.items = af.database.list('/items');
+    this.timeline = af.database.list('/timeline');    
+    this.items = af.database.list('/items');
   }
+
 
 }

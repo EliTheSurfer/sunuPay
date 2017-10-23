@@ -16,7 +16,8 @@ export class MyJobsPage {
   
   constructor(public navCtrl: NavController, private af: AngularFire) {
     this.consultants = af.database.list('/consultants');
-    console.log(this.consultants);    
+
+    console.log(this.consultants); 
     
   }
 
