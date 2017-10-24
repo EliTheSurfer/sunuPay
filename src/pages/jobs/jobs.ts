@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service';
 //import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { AngularFire, AngularFireModule, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
+import { PostDetailsPage } from '../post-details/post-details'
 
 import { LoginPage } from '../login/login';
 
@@ -21,5 +22,10 @@ export class JobsPage {
     this.items = af.database.list('/items');
   }
 
+ goToPost() {
+  this.navCtrl.push(PostDetailsPage,{
+  } );
+
+ }
 
 }
