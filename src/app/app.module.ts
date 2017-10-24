@@ -19,6 +19,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule } from 'angularfire2';
 import { Router } from '@angular/router';
 
+import { Keyboard } from '@ionic-native/keyboard';
+
 import { AuthService } from '../providers/auth-service';
 
 /*YOU HAVE TO PUT YOUR APIKEY FROM YOUR FIREBASE COUNT*/
@@ -77,6 +79,7 @@ export const firebaseConfig = {
     AuthService,
     StatusBar,
     SplashScreen,
+    Keyboard,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
