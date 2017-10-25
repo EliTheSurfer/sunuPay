@@ -14,7 +14,7 @@ export class PostModel {
       this.date = dateToSet;
   }
 
-  public get getDate():any {
+  public  getDate():any {
       return this.date;
   }
 
@@ -22,7 +22,7 @@ export class PostModel {
     this.nom = nomToSet;
     }
 
-  public get getNom():any {
+  public  getNom():any {
         return this.nom;
     }
 
@@ -30,7 +30,7 @@ export class PostModel {
         this.prenoms = prenomToSet;
     }
 
-    public get getPrenom():any {
+    public  getPrenom():any {
         return this.prenoms;
     }
 
@@ -38,7 +38,7 @@ export class PostModel {
         this.texte = textToSet;
     }
 
-    public get getText():any {
+    public  getText():any {
         return this.texte;
     }
 
@@ -46,8 +46,8 @@ export class PostModel {
         this.photoDeProfil = photoToSet;
     }
 
-    public get getPhoto():any {
-        return this.photo;
+    public  getPhoto():any {
+        return this.photoDeProfil;
     }
     
 
@@ -55,7 +55,7 @@ export class PostModel {
         this.like = LikeNumberToSet;
     }
 
-    public get getLikeNumber():any {
+    public  getLikeNumber():any {
         return this.like;
     }
 
@@ -63,7 +63,7 @@ export class PostModel {
         this.commentaire = commentNumberToSet;
     }
 
-    public get getCommentNumber():any {
+    public  getCommentNumber():any {
         return this.commentaire;
     }
     

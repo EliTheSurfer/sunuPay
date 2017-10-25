@@ -55,13 +55,13 @@
 
 
   <ion-list>
-      <ion-card class="text cards-job" *ngFor="let post of timeline | async">
+      <ion-card class="text cards-job" *ngFor="let post of (timeline | async)?.reverse()">
       <ion-item>
         <ion-avatar item-left>
           <img src="{{post.photoDeProfil}}">
         </ion-avatar>
         <h2>{{post.prenoms}}  {{post.nom}}</h2>
-        <p>Posté le : 31/10/2017</p>
+        <p>Posté le : {{post.date}}</p>
       </ion-item>
 
 

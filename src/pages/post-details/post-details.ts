@@ -73,11 +73,12 @@ export class PostDetailsPage {
     this.model.setPrenoms(this.prenoms);
     this.model.setCommentNumber(0);
     this.model.setLikeNumber(0);
-    this.model.setDate(new Date());
+    this.model.setDate(new Date().toLocaleString());
     this.model.setText(this.textToPublish);
 
 
     console.log("----------------");
+    console.log(this.model.getDate());    
     console.log(this.model);
 
 
