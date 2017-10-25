@@ -18,7 +18,7 @@ export class JobsPage {
   userId : string;  
 
   timeline : FirebaseListObservable<any[]>;  
-  item : FirebaseObjectObservable <any[]>;
+  currentUserInformations : FirebaseObjectObservable <any[]>;
   
   userLogin : any;
   
@@ -31,14 +31,14 @@ export class JobsPage {
 
 
     this.timeline = af.database.list('/timeline');  
-    this.item = af.database.object('/consultants/'+this.userId);
-    console.log(this.item.subscribe(snapshot => {    console.log(snapshot)
+    this.currentUserInformations = af.database.object('/consultants/'+this.userId);
+    console.log(this.currentUserInformations.subscribe(snapshot => {    console.log(snapshot)
     }));
   }
 
  goToPost() {
   this.navCtrl.push(PostDetailsPage,{
-     writer : this.item
+     writer : this.currentUserInformations
   } );
 
  }
