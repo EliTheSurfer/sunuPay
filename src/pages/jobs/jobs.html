@@ -18,9 +18,6 @@
 
 <ion-content padding style="background-color:ghostwhite;">
   
-  <div >
-    <h1> {{(currentUserInformations | async)?.nom }}  </h1>  
-  </div>
   
   <ion-list>
       <ion-card class="text cards-job" *ngFor="let item of items | async">

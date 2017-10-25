@@ -15,8 +15,7 @@ import { LoginPage } from '../login/login';
 })
 export class JobsPage {
 
-  userId : string;  
-
+  userId : string;    
   timeline : FirebaseListObservable<any[]>;  
   currentUserInformations : FirebaseObjectObservable <any[]>;
   
@@ -31,8 +30,12 @@ export class JobsPage {
 
 
     this.timeline = af.database.list('/timeline');  
-    this.currentUserInformations = af.database.object('/consultants/'+this.userId);
-    console.log(this.currentUserInformations.subscribe(snapshot => {    console.log(snapshot)
+
+    let ref = firebase.database().ref('/consultants/'+this.userId);
+    
+
+    this.currentUserInformations = af.database.object('/consultants/'+this.userId,  { preserveSnapshot: true });
+    console.log(this.currentUserInformations.subscribe(snapshot => {    console.log(snapshot.values)
     }));
   }
 
