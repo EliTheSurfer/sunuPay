@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
+
 
 /**
  * Generated class for the PostDetailsPage page.
@@ -14,11 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PostDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  root:any;
+  profil : any;
+  textToPublish : any;
+  
+
+  constructor(public navCtrl: NavController,public element: ElementRef,private keyboard: Keyboard, public navParams: NavParams) {
+    this.profil = navParams.get("writer");
+    this.keyboard.show();    
+    
+  }
+  ngOnInit(){
+    this.root = this.element.nativeElement;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostDetailsPage');
+  }
+
+  publish(){
+    console.log(this.textToPublish);
+    console.log(this.profil);
   }
 
 }
