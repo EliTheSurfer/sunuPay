@@ -31,7 +31,6 @@ export class PostDetailsPage {
   date : Date;
   nom : string;
   prenoms : string;
-  texte  : string;
   photo : string;
   model : PostModel;
   timeline : any;
@@ -39,10 +38,14 @@ export class PostDetailsPage {
 
   constructor(public navCtrl: NavController,public element: ElementRef,private keyboard: Keyboard,af: AngularFire, public navParams: NavParams) { 
 
+    //Iniatialisation du modele de post
     this.model = new PostModel();
+
+    //Recupererons l'id de l'utilisateur actuel 
     this.userLogin = firebase.auth().currentUser.email;    
     this.userId = this.userLogin.split("@")[0].replace(".","");
-    console.log(this.userId);
+    
+    //Recuperons les informations de l'utilisateur actuel
     let instance = this;
     let consultant = firebase.database().ref('/consultants/'+this.userId);
     consultant.once("value")
@@ -52,6 +55,7 @@ export class PostDetailsPage {
                    instance.photo = snapshot.child("photoDeProfil").val();
     });
 
+    //connexion a la timeline
      this.timeline = af.database.list('timeline');
     
     
@@ -67,9 +71,9 @@ export class PostDetailsPage {
 
   publish(){
 
+    //On recupere les informations du post a envoyer
     this.model.setNom(this.nom);
     this.model.setPhoto(this.photo);
-    console.log(this.photo);
     this.model.setPrenoms(this.prenoms);
     this.model.setCommentNumber(0);
     this.model.setLikeNumber(0);
@@ -77,12 +81,9 @@ export class PostDetailsPage {
     this.model.setText(this.textToPublish);
 
 
-    console.log("----------------");
-    console.log(this.model.getDate());    
-    console.log(this.model);
-
-
+    //On envoie le post
     this.timeline.push(this.model);
+    this.textToPublish ="";
     
     
   }

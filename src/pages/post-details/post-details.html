@@ -16,21 +16,13 @@
 <ion-content padding>
   <ion-card>  
       <ion-textarea placeholder="Quoi de neuf ?" id="textToPublish"   [(ngModel)]="textToPublish"></ion-textarea>
-      <ion-item>        
-          <ion-row>
-              <ion-col>
-                  <button ion-button icon-left clear large color="danger">
-                    <ion-icon name="ios-camera"></ion-icon>
-                  </button>
-              </ion-col>
-              <ion-col>
-                <button ion-button icon-right clear large color="danger" (click)="publish()">
-                  <ion-icon name="ios-send"></ion-icon>
-                </button>
-              </ion-col>
-          </ion-row>
+ </ion-card>
+  <div text-center>
+    
+   <button ion-button  (click)="publish()"  round color="secondary">envoyer</button>
+  
+  </div>
 
-
-      </ion-item>
-  </ion-card>
 </ion-content>
+
+
