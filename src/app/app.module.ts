@@ -1,3 +1,4 @@
+import { ChatDetailsPage } from './../pages/chat-details/chat-details';
 import { ConsultantPipe } from './../pipe/consultantFilter';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,6 +47,7 @@ export const firebaseConfig = {
     ConsultantPipe,
     TabsPage,
     ProfileDetailsPage,
+    ChatDetailsPage,
     PostDetailsPage
   ],
   imports: [
@@ -73,6 +75,7 @@ export const firebaseConfig = {
     SignUpPage,
     ProfileDetailsPage,
     TabsPage,
+    ChatDetailsPage,
     PostDetailsPage
   ],
   providers: [

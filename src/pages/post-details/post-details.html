@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="color : ghostwhite">
   <ion-card>  
       <ion-textarea placeholder="Quoi de neuf ?"  [(ngModel)]="textToPublish"></ion-textarea>
  </ion-card>
@@ -21,9 +21,7 @@
   <div text-center>
    <button ion-button  (click)="publish()"   round color="secondary" [disabled]="textToPublish.length == 0">envoyer</button>
   </div>
-
-  <h1> {{textToPublish.length}} </h1>
-
+""
 </ion-content>
 
 
