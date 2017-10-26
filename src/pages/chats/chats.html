@@ -42,15 +42,17 @@
     Contacts Neolynk
   </ion-list-header>
 
-  <ion-item *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">
-    <ion-thumbnail item-left>
-      <img src={{profil.photoDeProfil}}>
-    </ion-thumbnail>
-    <h2>{{profil.prenoms}} {{profil.nom}}</h2>
-    <p>{{profil.poste.titre}}</p>
-    <button ion-button clear item-right (click)='chatWith(profil)'>Chatter</button>
+  <div *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">      
+  <ion-item *ngIf="profil.email != currentUser.email    ">
+      <ion-thumbnail item-left>
+        <img src={{profil.photoDeProfil}}>
+      </ion-thumbnail>
+      <h2>{{profil.prenoms}} {{profil.nom}}</h2>
+      <p>{{profil.poste.titre}}</p>
+      <button ion-button clear item-right (click)='chatWith(profil)'>Chatter</button>
   </ion-item>
-
+  </div>
+      
 </ion-list>
 
 </ion-content>
