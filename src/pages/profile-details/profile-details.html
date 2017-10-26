@@ -138,14 +138,14 @@
                 Contacts
               </ion-list-header>
     
-              <ion-item>
+              <ion-item (click)="presentEmailActionSheet()">
                 <ion-icon name='ios-mail-outline' item-left></ion-icon>
                   {{profil.email}}
                 <ion-note item-right></ion-note>
               </ion-item>
 
-              <ion-item>
-                  <ion-icon name='ios-call-outline'  (click)="call(consultant.telephone)" item-left></ion-icon>
+              <ion-item (click)="presentNumberActionSheet()">
+                  <ion-icon name='ios-call-outline'  item-left></ion-icon>
                   {{profil.telephone}}
                   <ion-note item-right></ion-note>
               </ion-item>

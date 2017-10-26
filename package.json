@@ -66,7 +66,7 @@
       "locator": "ios"
     }
   ],
-  "description": "FindJob: An Ionic project",
+  "description": "NeoLynker : Un RSE pour ESN",
   "cordova": {
     "plugins": {
       "mx.ferreyra.callnumber": {},

@@ -17,6 +17,7 @@ export class JobsPage {
 
   userId : string;    
   timeline : FirebaseListObservable<any[]>;  
+  items : FirebaseListObservable<any[]>;  
   currentUserInformations : FirebaseObjectObservable <any[]>;
   
   userLogin : any;
@@ -30,7 +31,8 @@ export class JobsPage {
 
 
     this.timeline = af.database.list('/timeline');  
-
+    this.items = af.database.list('items');
+    
     let ref = firebase.database().ref('/consultants/'+this.userId);
     
 

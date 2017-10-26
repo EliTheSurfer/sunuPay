@@ -5,8 +5,8 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="goToPost()" >
-        <ion-icon name="ios-create-outline"  ></ion-icon>  
+      <button ion-button   (click)="goToPost()" >
+        <ion-icon name="ios-create-outline"  style="font-size: x-large;" ></ion-icon>  
       </button>    
     </ion-buttons>
 
@@ -17,42 +17,6 @@
 
 
 <ion-content padding style="background-color:ghostwhite;">
-  
-  
-  <ion-list>
-      <ion-card class="text cards-job" *ngFor="let item of items | async">
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20d%20identite%20formatee.jpg?alt=media&token=2321fa9d-0aab-4dad-87bd-26099474c087">
-        </ion-avatar>
-        <h2>{{item.username}} {{item.lastname}}</h2>
-        <p>Posté le : {{item.date}}</p>
-      </ion-item>
-
-      <img src="assets/img/card.jpg">
-
-      <ion-card-content>
-        <p>Voici la nouvelles application communautaire pour tous les neolynkers.</p>
-      </ion-card-content>
-
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small color="danger">
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>28 j'aime</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small color="danger">
-            <ion-icon name="text" id="icon-eye"></ion-icon>
-            <div>62 commentaires</div>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-card>
-  </ion-list>
-  
-
 
   <ion-list>
       <ion-card class="text cards-job" *ngFor="let post of (timeline | async)?.reverse()">
@@ -86,7 +50,38 @@
     </ion-card>
   </ion-list>
 
+  <ion-list>
+    <ion-card class="text cards-job" *ngFor="let item of items | async">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="https://firebasestorage.googleapis.com/v0/b/neolynker.appspot.com/o/photo%20d%20identite%20formatee.jpg?alt=media&token=2321fa9d-0aab-4dad-87bd-26099474c087">
+      </ion-avatar>
+      <h2>{{item.username}} {{item.lastname}}</h2>
+      <p>Posté le : {{item.date}}</p>
+    </ion-item>
 
+    <img src="assets/img/card.jpg">
+
+    <ion-card-content>
+      <p>Voici la nouvelles application communautaire pour tous les neolynkers.</p>
+    </ion-card-content>
+
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>28 j'aime</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small color="danger">
+            <ion-icon name="text" id="icon-eye"></ion-icon>
+            <div>62 commentaires</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
 
 </ion-content>
 

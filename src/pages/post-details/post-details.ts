@@ -1,3 +1,4 @@
+import { JobsPage } from './../jobs/jobs';
 import { PostModel } from './../../models/postModel';
 import { FirebaseObjectObservable, AngularFire } from 'angularfire2';
 import { Component,ElementRef } from '@angular/core';
@@ -21,7 +22,7 @@ export class PostDetailsPage {
 
   root:any;
   profil : FirebaseObjectObservable<any[]>;
-  textToPublish : any;
+  textToPublish : string;
   
   userLogin : string ;
   userId : string ;
@@ -84,7 +85,8 @@ export class PostDetailsPage {
     //On envoie le post
     this.timeline.push(this.model);
     this.textToPublish ="";
-    
+    this.navCtrl.push(JobsPage);
+
     
   }
 

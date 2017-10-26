@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController,ActionSheetController, NavParams } from 'ionic-angular';
 import { AngularFire,AngularFireModule,AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
 
@@ -25,7 +25,7 @@ export class ProfileDetailsPage {
   userLogin : any;
   userId : string;
 
-  constructor(public navCtrl: NavController,private af: AngularFire, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,public actionSheetCtrl: ActionSheetController,private af: AngularFire, public navParams: NavParams) {
     this.profil = navParams.get("profil");
     this.profile = af.database.list('/consultants'); 
     this.userLogin = firebase.auth().currentUser;
@@ -61,6 +61,70 @@ export class ProfileDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfileDetailsPage');
+  }
+
+  presentNumberActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Contacter '+ this.profil.prenoms,
+      buttons: [
+        {
+          text: 'Appeler',
+          role: 'destructive',
+          handler: () => {
+            console.log('Destructive clicked');
+          }
+        },{
+          text: 'chatter',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: 'envoyer un SMS',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: 'copier le numero',
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  presentEmailActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Contacter '+ this.profil.prenoms,
+      buttons: [
+        {
+          text: 'Envoyer un email',
+          role: 'destructive',
+          handler: () => {
+            console.log('Destructive clicked');
+          }
+        },{
+          text: "Copier l'adresse e-mail",
+          handler: () => {
+            console.log('Archive clicked');
+          }
+        },{
+          text: 'Annuler',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }
