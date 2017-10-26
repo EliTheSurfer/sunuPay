@@ -14,10 +14,13 @@ export class LoginPage implements OnInit{
 	root:any;
   splash = true;
   secondPage = LoginPage;
+  etatDeConnexion = "non connecté";
 
   constructor(public navCtrl: NavController,public af: AngularFire, public element: ElementRef, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   	window.localStorage.removeItem('user');
-  	this.element.nativeElement
+    this.element.nativeElement
+    
+    this.etatDeConnexion = "non connecté";
   }
 
   ionViewDidLoad() {
@@ -32,7 +35,8 @@ export class LoginPage implements OnInit{
 
  onClick(){
  	console.log('logging in with email and password');
- 	let self = this;
+  let self = this;
+  self.etatDeConnexion ="connexion en cours";
  	let email:string = this.root.querySelector('#email').value;
  	let password:string = this.root.querySelector('#password').value;
  	this.af.auth.login({
@@ -53,15 +57,22 @@ export class LoginPage implements OnInit{
     }
     else {
       this.af.auth.logout();
+      self.etatDeConnexion = "non connecté";
+      self.alertCtrl.create({
+        title: 'Echec de la connexion',
+        subTitle: "Veuillez vérifier votre adresse email",
+        buttons: ['Ok']
+      }).present();
     }
     ;            
  	}).catch(function(error){
      self.alertCtrl.create({
         title: 'Echec de la connexion',
-        subTitle: 'l email ou le  mot de passe est incorrect',
+        subTitle: "L'email ou le  mot de passe est incorrect",
         buttons: ['Ok']
       }).present();
- 		console.log('error');
+     console.log('error');
+     self.etatDeConnexion = "non connecté";     
    });
    
  }

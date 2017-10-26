@@ -41,6 +41,7 @@ export class PostDetailsPage {
 
     //Iniatialisation du modele de post
     this.model = new PostModel();
+    this.textToPublish ="";
 
     //Recupererons l'id de l'utilisateur actuel 
     this.userLogin = firebase.auth().currentUser.email;    

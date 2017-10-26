@@ -26,7 +26,7 @@
 
     </ion-list>
     <div class="row" id="row-btn-3">
-      <button  ion-button  col-12  (click)="onClick()">Connexion</button>        
+      <button  ion-button  col-12  [disabled]="etatDeConnexion !=  'non connecté'" (click)="onClick()">Connexion</button>        
     </div>
 
   </form>
