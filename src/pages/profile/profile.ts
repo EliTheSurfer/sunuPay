@@ -20,7 +20,7 @@ export class ProfilePage {
   skillList : FirebaseListObservable<any[]>;
   hobbies : string[];
   userLogin : any;
-  userId : string;
+  public userId : string;
   authState: any = null;
   
   

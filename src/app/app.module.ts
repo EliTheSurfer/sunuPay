@@ -1,3 +1,5 @@
+import { userInformationService } from './../providers/userInformation-service';
+import { ChatIdProviderService } from './../providers/chatIdProvider-service';
 import { ChatDetailsPage } from './../pages/chat-details/chat-details';
 import { ConsultantPipe } from './../pipe/consultantFilter';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -83,6 +85,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     Keyboard,
+    userInformationService,
+    ChatIdProviderService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
