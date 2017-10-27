@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>chat-details</ion-title>
+    <ion-title>{{receiver.prenoms}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +15,26 @@
 
 <ion-content padding>
 
+
+    <ion-footer>
+        <ion-toolbar>
+            <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish"></ion-input>
+
+
+            <ion-buttons end>
+                <button (click)="sendMessage()">
+                <ion-icon name="md-send" style="font-size : x-large;"></ion-icon>
+              </button>
+            </ion-buttons>
+            
+        </ion-toolbar>
+
+
+    </ion-footer>
+
+    
+    
+
 </ion-content>
+
+

@@ -10,6 +10,7 @@ export class userInformationService {
     schoolList : FirebaseListObservable<any[]>;
     workList : FirebaseListObservable<any[]>;
     skillList : FirebaseListObservable<any[]>;
+    userReference : FirebaseListObservable<any[]>;
     hobbies : string[];
     userLogin : any;
     userId : string;
@@ -23,6 +24,9 @@ export class userInformationService {
       //Formattage de l'id de l'utilisateur courant
       this.userId = this.userLogin.email.split("@")[0].replace(".","");
   
+    
+      this.userReference = af.database.list('/consultants/'+this.userId); 
+      
       this.schoolList = af.database.list('/consultants/'+this.userId+'/etudes', {
         query: {
           orderByChild: 'date'
