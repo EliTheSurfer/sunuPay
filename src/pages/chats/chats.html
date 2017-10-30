@@ -42,8 +42,11 @@
     Contacts Neolynk
   </ion-list-header>
 
-  <div *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">      
-  <ion-item *ngIf="profil.email != currentUser.email " (click)='chatWith(profil)' >
+  <div *ngFor="let profil of consultants | async | consultantFilter:listFilter.value "> 
+
+  <div *ngIf="profil.email == currentUser.email" >  {{ getSender(profil)}} </div>
+
+  <ion-item *ngIf="profil.email != currentUser.email" (click)='chatWith(profil,this.sender)' >
       <ion-thumbnail item-left>
         <img src={{profil.photoDeProfil}}>
       </ion-thumbnail>

@@ -18,7 +18,7 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 
 export class ChatDetailsPage  implements AfterViewChecked{
-  
+
   ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
@@ -28,6 +28,7 @@ export class ChatDetailsPage  implements AfterViewChecked{
   conversationReference : FirebaseListObservable<any[]>;
   chatId : string;
   messageToSend : chatMessageModel;
+  sender : any;
   receiver : any;
 
   
@@ -37,7 +38,9 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.messageToSend = new chatMessageModel();
     this.chatId = navParams.get("chatId"); 
     this.receiver = navParams.get("profil"); 
-    
+    this.sender = navParams.get("sender"); 
+
+  
     this.conversationReference = af.database.list('/chat/'+this.chatId); 
     
     
@@ -46,14 +49,17 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
+    console.log(this.sender);
   }
 
   sendMessage(){
 
     this.messageToSend.setDate(new Date().toLocaleString());
     this.messageToSend.setMessage(this.textToPublish);
+    this.messageToSend.setPhoto(this.sender.photoDeProfil);
     this.conversationReference.push(this.messageToSend);
     this.textToPublish="";    
+
     
   }
 

@@ -22,22 +22,33 @@
     <div #scrollMe id="messages-container" style="overflow: auto; height: 100%;">
         
         <ion-list>
-            <ion-card class="text cards-job" *ngFor="let message of conversationReference | async ">
+            <div class="text cards-job" *ngFor="let message of conversationReference | async ">
+                <ion-row>
+                    <ion-col col-2>
+                                <!-- item 1 -->
+                                <ion-avatar item-left>                        
+                                        <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
+                                </ion-avatar>
+                    </ion-col>         
+                    
 
-                <ion-avatar item-left>
-                    <img src="{{message.photoDeProfil}}">
-                </ion-avatar>
+                    <ion-col col-10>
+                            <!-- item 2 -->
+                            <ion-card>
+                            <ion-item>    
+                                    <h2>{{message.senderId}} </h2>
+                                    <p>envoyé : {{message.date}}</p>
+                            </ion-item>
+                                
+                            <ion-card-content>
+                                    <p>{{message.message}}</p>
+                            </ion-card-content>
+                            </ion-card>
+            
+                    </ion-col>
 
-                <ion-item>    
-                    <h2>{{message.senderId}} </h2>
-                    <p>envoyé : {{message.date}}</p>
-                </ion-item>
-                
-                <ion-card-content>
-                    <p>{{message.message}}</p>
-                </ion-card-content>
-
-            </ion-card>
+                </ion-row>
+            </div>
         </ion-list>
     </div>   
     

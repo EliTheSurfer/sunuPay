@@ -15,6 +15,7 @@ export class ChatsPage {
 
   consultants : FirebaseListObservable<any[]>;  
   currentUser : any;  
+  sender : any;
 
   constructor(public navCtrl: NavController,private chatService : ChatIdProviderService, private currentUserInformation : userInformationService, private af: AngularFire) {
     this.currentUser = firebase.auth().currentUser;        
@@ -22,12 +23,23 @@ export class ChatsPage {
   }
 
 
-  chatWith(profil : any) {
+  chatWith(profil : any, sender : any) {
     console.log(this.chatService.provideChatId(this.currentUserInformation.userId,profil.id));
     this.navCtrl.push(ChatDetailsPage,{
       profil: profil,
+      sender : sender,
       chatId : this.chatService.provideChatId(this.currentUserInformation.userId,profil.id)
     } );
-    
   }
+
+
+
+
+
+  getSender( receivedSender : any)
+  {
+    this.sender = receivedSender;
+  }
+
+  
 }
