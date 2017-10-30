@@ -1,8 +1,8 @@
 import { userInformationService } from './../../providers/userInformation-service';
 import { chatMessageModel } from './../../models/chatMessageModel';
 import { FirebaseListObservable, AngularFire } from 'angularfire2';
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 /**
  * Generated class for the ChatDetailsPage page.
@@ -13,12 +13,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-chat-details',
-  templateUrl: 'chat-details.html',
+  templateUrl: 'chat-details.html'
 })
 
 
-export class ChatDetailsPage {
+export class ChatDetailsPage  implements AfterViewChecked{
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
+  scrollToBottom(): void {
+    // method used to enable scrolling
+    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+}
+  
   textToPublish : "";
   conversationReference : FirebaseListObservable<any[]>;
   chatId : string;
@@ -33,7 +42,8 @@ export class ChatDetailsPage {
     this.chatId = navParams.get("chatId"); 
     this.receiver = navParams.get("profil"); 
     
-    this.conversationReference = af.database.list('/chat/'+this.chatId);  
+    this.conversationReference = af.database.list('/chat/'+this.chatId); 
+    
     
 
   }
@@ -47,7 +57,7 @@ export class ChatDetailsPage {
     this.messageToSend.setDate(new Date().toLocaleString());
     this.messageToSend.setMessage(this.textToPublish);
     this.conversationReference.push(this.messageToSend);
-    this.textToPublish="";
+    this.textToPublish="";    
     
   }
 

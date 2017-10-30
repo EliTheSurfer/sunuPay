@@ -13,28 +13,51 @@
 </ion-header>
 
 
+
+
+
 <ion-content padding>
 
 
-    <ion-footer>
-        <ion-toolbar>
-            <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish"></ion-input>
+    <div #scrollMe id="messages-container" style="overflow: auto; height: 100%;">
+        
+        <ion-list>
+            <ion-card class="text cards-job" *ngFor="let message of conversationReference | async ">
 
+                <ion-avatar item-left>
+                    <img src="{{message.photoDeProfil}}">
+                </ion-avatar>
 
-            <ion-buttons end>
-                <button (click)="sendMessage()">
-                <ion-icon name="md-send" style="font-size : x-large;"></ion-icon>
-              </button>
-            </ion-buttons>
-            
-        </ion-toolbar>
+                <ion-item>    
+                    <h2>{{message.senderId}} </h2>
+                    <p>envoyé : {{message.date}}</p>
+                </ion-item>
+                
+                <ion-card-content>
+                    <p>{{message.message}}</p>
+                </ion-card-content>
 
-
-    </ion-footer>
-
+            </ion-card>
+        </ion-list>
+    </div>   
     
-    
-
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish"></ion-input>
+
+
+        <ion-buttons end>
+            <button (click)="sendMessage()">
+            <ion-icon name="md-send" style="font-size : x-large;"></ion-icon>
+          </button>
+        </ion-buttons>
+        
+    </ion-toolbar>
+
+
+</ion-footer>
+
 
 

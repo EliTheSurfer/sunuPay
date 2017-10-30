@@ -43,13 +43,13 @@
   </ion-list-header>
 
   <div *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">      
-  <ion-item *ngIf="profil.email != currentUser.email    ">
+  <ion-item *ngIf="profil.email != currentUser.email " (click)='chatWith(profil)' >
       <ion-thumbnail item-left>
         <img src={{profil.photoDeProfil}}>
       </ion-thumbnail>
       <h2>{{profil.prenoms}} {{profil.nom}}</h2>
       <p>{{profil.poste.titre}}</p>
-      <button ion-button clear item-right (click)='chatWith(profil)'>Chatter</button>
+      <button ion-button clear item-right >Chatter</button>
   </ion-item>
   </div>
       
