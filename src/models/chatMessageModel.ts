@@ -2,6 +2,7 @@ export class chatMessageModel {
     //données d'un post
     private date : Date;
     private envoyeurId : string;
+    private envoyeurNomComplet : string;
     private recepteurId : string; 
     private message  : string;
     private photoDeProfil : string;
@@ -58,6 +59,16 @@ export class chatMessageModel {
           
       }
   
+
+      public setEnvoyeurNomComplet( nomComplet : any){
+        this.envoyeurNomComplet = nomComplet;
+    }
+
+    
+    public  getEnvoyeurNomComplet():any {
+        return this.envoyeurNomComplet;
+        
+    }
   
   
   }

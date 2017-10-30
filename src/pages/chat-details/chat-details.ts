@@ -56,7 +56,10 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
     this.messageToSend.setDate(new Date().toLocaleString());
     this.messageToSend.setMessage(this.textToPublish);
+    this.messageToSend.setEnvoyeurId(this.sender.id);
+    this.messageToSend.setRecepeteurId(this.receiver.id);
     this.messageToSend.setPhoto(this.sender.photoDeProfil);
+    this.messageToSend.setEnvoyeurNomComplet(this.sender.prenoms+ " "+ this.sender.nom);
     this.conversationReference.push(this.messageToSend);
     this.textToPublish="";    
 

@@ -24,7 +24,7 @@
         <ion-list>
             <div class="text cards-job" *ngFor="let message of conversationReference | async ">
                 <ion-row>
-                    <ion-col col-2>
+                    <ion-col style="padding-top : 35px" col-2>
                                 <!-- item 1 -->
                                 <ion-avatar item-left>                        
                                         <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
@@ -34,10 +34,10 @@
 
                     <ion-col col-10>
                             <!-- item 2 -->
-                            <ion-card>
+                            <ion-card style="border-radius : 25px;">
                             <ion-item>    
-                                    <h2>{{message.senderId}} </h2>
-                                    <p>envoyé : {{message.date}}</p>
+                                    <p>{{message.envoyeurNomComplet}} </p>
+                                    <p> envoyé : {{message.date}}</p>
                             </ion-item>
                                 
                             <ion-card-content>
