@@ -18,16 +18,12 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 
 export class ChatDetailsPage  implements AfterViewChecked{
+  
   ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
-  scrollToBottom(): void {
-    // method used to enable scrolling
-    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-}
-  
   textToPublish : "";
   conversationReference : FirebaseListObservable<any[]>;
   chatId : string;
@@ -60,5 +56,11 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.textToPublish="";    
     
   }
+
+  scrollToBottom(): void {
+    // method used to enable scrolling
+    this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+}
+  
 
 }
