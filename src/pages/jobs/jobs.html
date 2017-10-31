@@ -4,12 +4,6 @@
       Timeline
     </ion-title>
 
-    <ion-buttons end>
-      <button ion-button   (click)="goToPost()" >
-        <ion-icon name="ios-create-outline"  style="font-size: x-large;" ></ion-icon>  
-      </button>    
-    </ion-buttons>
-
   </ion-navbar>
 </ion-header>
 
@@ -17,6 +11,11 @@
 
 
 <ion-content padding style="background-color:ghostwhite;">
+
+    <ion-fab top right edge (click)="goToPost()">
+        <button ion-fab mini color="secondary"><ion-icon name="md-send"></ion-icon></button>
+      </ion-fab>
+  
 
   <ion-list>
       <ion-card class="text cards-job" *ngFor="let post of (timeline | async)?.reverse()">

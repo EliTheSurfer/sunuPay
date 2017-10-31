@@ -23,6 +23,7 @@
         
         <ion-list>
             <div class="text cards-job" *ngFor="let message of conversationReference | async ">
+
                 <ion-row>
                     <ion-col style="padding-top : 35px" col-2 *ngIf="message.recepteurId === sender.id">
                                 <!-- item 1 -->
@@ -32,18 +33,19 @@
                     </ion-col>         
                     
 
-                    <ion-col col-10>
+                    <ion-col col-10 style="bottom : 20px;">
                             <!-- item 2 -->
                             <ion-card style="border-radius : 25px;" >
-                            <ion-item [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">    
-                                    <p>{{message.envoyeurNomComplet}} </p>
-                                    <p> envoyé : {{message.date}}</p>
-                            </ion-item>
+
                                 
                             <ion-card-content [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">
                                     <p>{{message.message}}</p>
                             </ion-card-content>
-                            </ion-card>          
+                            </ion-card> 
+                            <a class="item item-icon-right" style="text-align: end;">
+                                <ion-icon  name="ios-done-all" ></ion-icon>                                    
+                            </a>
+                            
                     </ion-col>
 
 
@@ -52,7 +54,9 @@
                             <ion-avatar item-left>                        
                                     <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
                             </ion-avatar>
-                     </ion-col>    
+                     </ion-col>  
+                     
+                     
    
 
                 </ion-row>
