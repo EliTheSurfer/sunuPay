@@ -1,8 +1,10 @@
 import { userInformationService } from './../../providers/userInformation-service';
 import { chatMessageModel } from './../../models/chatMessageModel';
-import { FirebaseListObservable, AngularFire } from 'angularfire2';
+import { FirebaseListObservable, AngularFire, FirebaseObjectObservable } from 'angularfire2';
 import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import * as firebase from 'firebase';
+
 
 /**
  * Generated class for the ChatDetailsPage page.
@@ -30,10 +32,12 @@ export class ChatDetailsPage  implements AfterViewChecked{
   messageToSend : chatMessageModel;
   sender : any;
   receiver : any;
+  ref : any;
+  
 
   
 
-  constructor(public navCtrl: NavController, private currentUserInformation : userInformationService,af: AngularFire, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private currentUserInformation : userInformationService,public af: AngularFire, public navParams: NavParams) {
 
     this.messageToSend = new chatMessageModel();
     this.chatId = navParams.get("chatId"); 
@@ -42,6 +46,7 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
   
     this.conversationReference = af.database.list('/chat/'+this.chatId); 
+    this.ref = firebase.database().ref('/chat/'+this.chatId);
     
     
 
@@ -49,6 +54,16 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
+    let instance = this;
+    //On marque les messages comme 'lu'
+    this.ref.orderByValue().on('value', function(data: any) {
+      data.forEach(function(snap: any) {
+          if(snap.val().envoyeurId  !=  instance.sender.id){
+            instance.conversationReference.update(snap.getKey(),{etat : 'lu'});            
+          }
+      });
+     });
+
     console.log(this.sender);
   }
 
@@ -60,10 +75,15 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.messageToSend.setRecepeteurId(this.receiver.id);
     this.messageToSend.setPhoto(this.sender.photoDeProfil);
     this.messageToSend.setEnvoyeurNomComplet(this.sender.prenoms+ " "+ this.sender.nom);
+    this.messageToSend.setEtat("envoyé");
     this.conversationReference.push(this.messageToSend);
     this.textToPublish="";    
 
     
+  }
+
+  messageIsread(message : any){
+
   }
 
   scrollToBottom(): void {

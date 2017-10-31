@@ -42,8 +42,11 @@
                                     <p>{{message.message}}</p>
                             </ion-card-content>
                             </ion-card> 
-                            <a class="item item-icon-right" style="text-align: end;">
+                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'lu'">
                                 <ion-icon  name="ios-done-all" ></ion-icon>                                    
+                            </a>
+                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé'">
+                                    <ion-icon  name="ios-checkmark" ></ion-icon>                                    
                             </a>
                             
                     </ion-col>
