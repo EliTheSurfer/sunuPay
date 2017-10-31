@@ -34,13 +34,13 @@
 
                     <ion-col col-10>
                             <!-- item 2 -->
-                            <ion-card style="border-radius : 25px;">
-                            <ion-item>    
+                            <ion-card style="border-radius : 25px;" >
+                            <ion-item [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">    
                                     <p>{{message.envoyeurNomComplet}} </p>
                                     <p> envoyé : {{message.date}}</p>
                             </ion-item>
                                 
-                            <ion-card-content>
+                            <ion-card-content [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">
                                     <p>{{message.message}}</p>
                             </ion-card-content>
                             </ion-card>          
