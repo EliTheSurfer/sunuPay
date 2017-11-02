@@ -47,6 +47,9 @@ export class ChatDetailsPage  implements AfterViewChecked{
   
     this.conversationReference = af.database.list('/chat/'+this.chatId); 
     this.ref = firebase.database().ref('/chat/'+this.chatId);
+
+    //Si les messages sont chargés on les marque comme lu
+    this.tagMessages();
     
     
 
