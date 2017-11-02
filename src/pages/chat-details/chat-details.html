@@ -21,7 +21,7 @@
 
     <div #scrollMe id="messages-container" style="overflow: auto; height: 100%;">
         
-        <ion-list>
+        <ion-list >
             <div class="text cards-job" *ngFor="let message of conversationReference | async ">
 
                 <ion-row>
@@ -42,17 +42,18 @@
                                     <p>{{message.message}}</p>
                             </ion-card-content>
                             </ion-card> 
-                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'lu'">
+
+                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
                                 <ion-icon  name="ios-done-all" ></ion-icon>                                    
                             </a>
-                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé'">
-                                    <ion-icon  name="ios-checkmark" ></ion-icon>                                    
+                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé' && message.recepteurId === receiver.id">
+                                <ion-icon  name="ios-checkmark" ></ion-icon>                                    
                             </a>
                             
                     </ion-col>
 
 
-                    <ion-col style="padding-top : 20px" col-2 *ngIf="message.recepteurId === receiver.id">
+                    <ion-col style="padding-top : 15px" col-2 *ngIf="message.recepteurId === receiver.id">
                             <!-- item 1 -->
                             <ion-avatar item-left>                        
                                     <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
@@ -71,7 +72,7 @@
 
 <ion-footer>
     <ion-toolbar>
-        <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish"></ion-input>
+        <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish" (ngModelChange)="tagMessages()"></ion-input>
 
 
         <ion-buttons end>

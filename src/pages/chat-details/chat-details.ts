@@ -54,17 +54,22 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
+    
+  }
+
+  tagMessages(){
+
+    console.log('tag message');
     let instance = this;
     //On marque les messages comme 'lu'
     this.ref.orderByValue().on('value', function(data: any) {
       data.forEach(function(snap: any) {
-          if(snap.val().envoyeurId  !=  instance.sender.id){
+          if(snap.val().envoyeurId  !=  instance.sender.id  && snap.val().etat != 'lu'){
             instance.conversationReference.update(snap.getKey(),{etat : 'lu'});            
           }
       });
      });
 
-    console.log(this.sender);
   }
 
   sendMessage(){
