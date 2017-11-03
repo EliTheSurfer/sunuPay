@@ -1,7 +1,7 @@
 import { userInformationService } from './../../providers/userInformation-service';
 import { chatMessageModel } from './../../models/chatMessageModel';
 import { FirebaseListObservable, AngularFire, FirebaseObjectObservable } from 'angularfire2';
-import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewChecked, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import * as firebase from 'firebase';
 
@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
 })
 
 
-export class ChatDetailsPage  implements AfterViewChecked{
+export class ChatDetailsPage  implements AfterViewChecked, OnInit{
 
   ngAfterViewChecked(): void {
     this.scrollToBottom();
@@ -46,35 +46,47 @@ export class ChatDetailsPage  implements AfterViewChecked{
 
   
     this.conversationReference = af.database.list('/chat/'+this.chatId); 
-    this.ref = firebase.database().ref('/chat/'+this.chatId);
+    this.ref = firebase.database().ref('/chat/'+this.chatId);    
 
+  }
+
+  ngOnInit() {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
     //Si les messages sont chargés on les marque comme lu
-    this.tagMessages();
+    this.tagMessages('constructeur');
     
     
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
+        
     
   }
 
-  tagMessages(){
+  /**
+   * fonction qui permet marquer les messages comme etant lus
+   * @param message message de log
+   */
+  tagMessages(message : string ){
 
-    console.log('tag message');
     let instance = this;
     //On marque les messages comme 'lu'
-    this.ref.orderByValue().on('value', function(data: any) {
-      data.forEach(function(snap: any) {
-          if(snap.val().envoyeurId  !=  instance.sender.id  && snap.val().etat != 'lu'){
-            instance.conversationReference.update(snap.getKey(),{etat : 'lu'});            
-          }
+    console.log(message + " "+ instance.currentUserInformation.userId);   
+      this.ref.orderByValue().on('value', function(data: any) {
+        data.forEach(function(snap: any) {
+            if(snap.val().envoyeurId  !=  instance.currentUserInformation.userId  && snap.val().etat != 'lu' && instance.navCtrl.getActive().name ==='ChatDetailsPage'){
+              console.log(snap.val().envoyeurId + " " +snap.val().message );
+              instance.conversationReference.update(snap.getKey(),{etat : 'lu'});            
+            }
+        });
       });
-     });
+    }
 
-  }
-
+  /**
+   * fonction qui permet de d'envoyer un message en fonction des informations rentrées par l'utilisateur
+   */
   sendMessage(){
 
     this.messageToSend.setDate(new Date().toLocaleString());
@@ -90,10 +102,10 @@ export class ChatDetailsPage  implements AfterViewChecked{
     
   }
 
-  messageIsread(message : any){
 
-  }
-
+  /**
+   * fonction d'auto-scroll
+   */
   scrollToBottom(): void {
     // method used to enable scrolling
     this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;

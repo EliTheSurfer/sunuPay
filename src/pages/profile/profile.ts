@@ -58,8 +58,8 @@ export class ProfilePage {
   }
 
   logout(){
-	//clear any cached data
-	this.app.getRootNav().setRoot(LoginPage);
+  //clear any cached data
+  this.app.getRootNav().setRoot(LoginPage);  
   }
 
   // Returns true if user is logged in

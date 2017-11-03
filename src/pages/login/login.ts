@@ -30,7 +30,9 @@ export class LoginPage implements OnInit{
   }
 
  ngOnInit(){
- 	this.root = this.element.nativeElement;
+   this.root = this.element.nativeElement;
+   this.af.auth.logout();
+   
  }
 
  onClick(){
