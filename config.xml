@@ -88,4 +88,7 @@
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="phonegap-plugin-push" spec="^2.1.0">
+        <variable name="SENDER_ID" value="488843974722" />
+    </plugin>
 </widget>

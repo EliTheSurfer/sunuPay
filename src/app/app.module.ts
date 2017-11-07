@@ -25,6 +25,8 @@ import { Router } from '@angular/router';
 import { Keyboard } from '@ionic-native/keyboard';
 
 import { AuthService } from '../providers/auth-service';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
 
 /*YOU HAVE TO PUT YOUR APIKEY FROM YOUR FIREBASE COUNT*/
 
@@ -36,6 +38,25 @@ export const firebaseConfig = {
   storageBucket: "neolynker.appspot.com",
   messagingSenderId: "488843974722"
 };
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '8da21a1d'
+  },
+  'push': {
+    'sender_id': '488843974722',
+    'pluginConfig': {
+      'ios': {
+        'badge': true,
+        'sound': true
+      },
+      'android': {
+        'iconColor': '#343434'
+      }
+    }
+  }
+};
+
 
 @NgModule({
   declarations: [
@@ -63,6 +84,8 @@ export const firebaseConfig = {
       tabsPlacement: 'bottom',
       pageTransition: 'ios'
     }),
+    CloudModule.forRoot(cloudSettings),
+    
 
     AngularFireModule.initializeApp(firebaseConfig)
   ],

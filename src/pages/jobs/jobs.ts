@@ -63,7 +63,6 @@ export class JobsPage {
       likerRef.update(message.$key,{like : likeNumber});
       likerRef.update(message.$key,{likersList : likersList});
     }
-    
   }
 
   /**
@@ -80,6 +79,7 @@ export class JobsPage {
       likerRef.update(message.$key,{like : likeNumber});
       likerRef.update(message.$key,{likersList : likersList});
     } 
+    
   }
 
 
