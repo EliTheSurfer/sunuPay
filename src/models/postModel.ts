@@ -2,6 +2,7 @@ export class PostModel {
   //données d'un post
   private date : Date;
   private nom : any;
+  private likersList : string[];
   private prenoms : string; 
   private texte  : string;
   private photoDeProfil : string;
@@ -68,6 +69,14 @@ export class PostModel {
     }
     
 
+    public setLikersList( likersListToSet : any){
+        this.likersList= likersListToSet;
+    }
+
+    public  getLikersList():any {
+        return this.likersList;
+    }
+    
 
 
 

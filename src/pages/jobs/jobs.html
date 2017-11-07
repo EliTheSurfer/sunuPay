@@ -36,7 +36,7 @@
         <ion-col>
           <button ion-button icon-left clear small color="danger">
             <ion-icon name="thumbs-up"></ion-icon>
-            <div>{{post.like}} j'aime</div>
+            <div (click)="aimer(post)">{{post.like}} j'aime</div>
           </button>
         </ion-col>
         <ion-col>

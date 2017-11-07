@@ -81,6 +81,7 @@ export class PostDetailsPage {
     this.model.setLikeNumber(0);
     this.model.setDate(new Date().toLocaleString());
     this.model.setText(this.textToPublish);
+    this.model.setLikersList("");
 
 
     //On envoie le post

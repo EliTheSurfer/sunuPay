@@ -1,3 +1,4 @@
+import { userInformationService } from './../../providers/userInformation-service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CommonModule } from '@angular/common';
@@ -23,7 +24,7 @@ export class JobsPage {
   userLogin : any;
   
 
-  constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService) {
+  constructor(private currentUserInformation : userInformationService,public navCtrl: NavController,public af: AngularFire,private _auth: AuthService) {
 
     this.userLogin = firebase.auth().currentUser;    
     this.userId = this.userLogin.email.split("@")[0].replace(".","");
@@ -41,11 +42,26 @@ export class JobsPage {
     }));
   }
 
- goToPost() {
-  this.navCtrl.push(PostDetailsPage,{
-     writer : this.currentUserInformations
-  } );
+  goToPost() {
+    this.navCtrl.push(PostDetailsPage,{
+      writer : this.currentUserInformations
+    } );
 
- }
+  }
+
+  aimer(message : any){
+    console.log(message.likersList.indexOf(this.currentUserInformation.userId));
+    if(message.likersList.indexOf(this.currentUserInformation.userId)<0)
+    {
+      let likeNumber = message.like +1;      
+      let likersList = (message.likersList +","+ this.currentUserInformation.userId);
+      let likerRef =this.af.database.list('/timeline/');
+      likerRef.update(message.$key,{like : likeNumber});
+      likerRef.update(message.$key,{likersList : likersList});
+    }
+    
+  }
+
+
 
 }

@@ -22,6 +22,7 @@ import * as firebase from 'firebase';
 export class ChatDetailsPage  implements AfterViewChecked, OnInit{
 
   ngAfterViewChecked(): void {
+    //Aller au message le plus recent directement
     this.scrollToBottom();
   }
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
@@ -39,12 +40,19 @@ export class ChatDetailsPage  implements AfterViewChecked, OnInit{
 
   constructor(public navCtrl: NavController, private currentUserInformation : userInformationService,public af: AngularFire, public navParams: NavParams) {
 
+    //On crée un modele de message à envoyer
     this.messageToSend = new chatMessageModel();
+
+    //On recupere l'id du chat dans lequel on est , c'est une variable de l'url de l'api REST
     this.chatId = navParams.get("chatId"); 
+
+    //On recupere les informations sur le destinataire du message
     this.receiver = navParams.get("profil"); 
+
+    //On recupere  les informations sur l'envoyeur du message
     this.sender = navParams.get("sender"); 
 
-  
+    //On situe les données de la conversation
     this.conversationReference = af.database.list('/chat/'+this.chatId); 
     this.ref = firebase.database().ref('/chat/'+this.chatId);    
 
@@ -73,7 +81,6 @@ export class ChatDetailsPage  implements AfterViewChecked, OnInit{
 
     let instance = this;
     //On marque les messages comme 'lu'
-    console.log(message + " "+ instance.currentUserInformation.userId);   
       this.ref.orderByValue().on('value', function(data: any) {
         data.forEach(function(snap: any) {
             if(snap.val().envoyeurId  !=  instance.currentUserInformation.userId  && snap.val().etat != 'lu' && instance.navCtrl.getActive().name ==='ChatDetailsPage'){
