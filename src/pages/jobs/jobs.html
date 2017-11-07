@@ -34,9 +34,17 @@
 
       <ion-row>
         <ion-col>
-          <button ion-button icon-left clear small color="danger">
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div (click)="toLike(post)">{{post.like}} j'aime</div>
+          <button ion-button icon-left clear small color="danger" 
+                  *ngIf="post.likersList.indexOf(this.currentUserInformation.userId)<0"
+                  (click)="toLike(post)">
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div >{{post.like}} j'aime</div>    
+          </button>
+          <button ion-button icon-left clear small color="twitter" 
+                  *ngIf="post.likersList.indexOf(this.currentUserInformation.userId)>0"
+                  (click)="toUnlike(post)">
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div >{{post.like}} j'aime</div>    
           </button>
         </ion-col>
         <ion-col>
@@ -46,6 +54,7 @@
           </button>
         </ion-col>
       </ion-row>
+
     </ion-card>
   </ion-list>
 
