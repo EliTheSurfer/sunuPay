@@ -18,13 +18,13 @@
   <ion-list>
     
 
-    <ion-item *ngFor="let profil of consultants | async | consultantFilter:listFilter.value ">
+    <ion-item *ngFor="let profil of consultants | async | consultantFilter:listFilter.value " (click)='goToConsultantDetails(profil)'>
       <ion-thumbnail item-left>
         <img src={{profil.photoDeProfil}}>
       </ion-thumbnail>
       <h2>{{profil.prenoms}} {{profil.nom}}</h2>
       <p>{{profil.poste.societe}} • {{profil.poste.titre}}</p>
-      <button ion-button clear item-right (click)='goToConsultantDetails(profil)'>voir</button>
+      <button ion-button clear item-right >voir</button>
     </ion-item>
 
   </ion-list>
