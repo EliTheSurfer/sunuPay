@@ -49,8 +49,9 @@ export class JobsPage {
 
   }
 
-  aimer(message : any){
+  toLike(message : any){
     console.log(message.likersList.indexOf(this.currentUserInformation.userId));
+    console.log(message.likersList.indexOf(message.likersList));
     if(message.likersList.indexOf(this.currentUserInformation.userId)<0)
     {
       let likeNumber = message.like +1;      
@@ -59,7 +60,27 @@ export class JobsPage {
       likerRef.update(message.$key,{like : likeNumber});
       likerRef.update(message.$key,{likersList : likersList});
     }
+    else{
+      let likeNumber = message.like - 1;      
+      let likersList = (message.likersList.replace(","+this.currentUserInformation.userId,""));
+      let likerRef =this.af.database.list('/timeline/');
+      likerRef.update(message.$key,{like : likeNumber});
+      likerRef.update(message.$key,{likersList : likersList});
+    }
     
+  }
+
+  toUnlike(message : any){
+    console.log(message.likersList.indexOf(this.currentUserInformation.userId));
+    console.log(message.likersList.indexOf(message.likersList));
+    if(message.likersList.indexOf(this.currentUserInformation.userId)>0)
+    {
+      let likeNumber = message.like -1;      
+      let likersList = (message.likersList.replace(","+this.currentUserInformation.userId,""));
+      let likerRef =this.af.database.list('/timeline/');
+      likerRef.update(message.$key,{like : likeNumber});
+      likerRef.update(message.$key,{likersList : likersList});
+    } 
   }
 
 
