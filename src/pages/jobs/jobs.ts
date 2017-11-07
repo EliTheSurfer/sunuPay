@@ -49,9 +49,12 @@ export class JobsPage {
 
   }
 
+  /**
+   * Fonction qui permet a l'utilisateur connecté de liker un post
+   * @param message type PostModel
+   */
   toLike(message : any){
-    console.log(message.likersList.indexOf(this.currentUserInformation.userId));
-    console.log(message.likersList.indexOf(message.likersList));
+    //Si l'utilisateur n'a pas déja liké le post alors il like
     if(message.likersList.indexOf(this.currentUserInformation.userId)<0)
     {
       let likeNumber = message.like +1;      
@@ -60,19 +63,15 @@ export class JobsPage {
       likerRef.update(message.$key,{like : likeNumber});
       likerRef.update(message.$key,{likersList : likersList});
     }
-    else{
-      let likeNumber = message.like - 1;      
-      let likersList = (message.likersList.replace(","+this.currentUserInformation.userId,""));
-      let likerRef =this.af.database.list('/timeline/');
-      likerRef.update(message.$key,{like : likeNumber});
-      likerRef.update(message.$key,{likersList : likersList});
-    }
     
   }
 
+  /**
+   * Fonction qui permet d'enlever le like de l'utilisateur connecté concernant un post
+   * @param message type PostModel 
+   */
   toUnlike(message : any){
-    console.log(message.likersList.indexOf(this.currentUserInformation.userId));
-    console.log(message.likersList.indexOf(message.likersList));
+    //Si l'utilisateur a déja liké alors il peut enlever son like
     if(message.likersList.indexOf(this.currentUserInformation.userId)>0)
     {
       let likeNumber = message.like -1;      
