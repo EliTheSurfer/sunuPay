@@ -43,6 +43,10 @@
                             </ion-card-content>
                             </ion-card> 
 
+                            <div style="text-align :end">
+                                 <ion-note >{{message.date}} . {{message.etat}}</ion-note>
+                            </div>
+                            
                             <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
                                 <ion-icon  name="ios-done-all" ></ion-icon>                                    
                             </a>
