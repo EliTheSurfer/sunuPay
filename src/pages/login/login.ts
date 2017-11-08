@@ -23,6 +23,7 @@ export class LoginPage implements OnInit{
     this.etatDeConnexion = "non connecté";
   }
 
+
   ionViewDidLoad() {
     setTimeout(() => {
       this.splash = false;
@@ -32,6 +33,7 @@ export class LoginPage implements OnInit{
  ngOnInit(){
    this.root = this.element.nativeElement;
    this.af.auth.logout();
+   this.etatDeConnexion ="non connecté";
    
  }
 

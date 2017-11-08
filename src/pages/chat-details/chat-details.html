@@ -70,15 +70,28 @@
     
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar>
-        <ion-input type="text" placeholder="message..." [(ngModel)]="textToPublish" (ngModelChange)="tagMessages('clavier')"></ion-input>
 
+<ion-footer>
+
+
+
+    <ion-toolbar>
+        <ion-textarea autoresize="100"
+                        placeholder="message..."
+                        spellcheck="on" 
+                        autocomplete="true" 
+                        (ngModelChange)="tagMessages('clavier')"
+                        [(ngModel)]="textToPublish" 
+                        style="border-radius: 7px; background-color: white;
+                        border: solid;
+                        border-color: cornflowerblue;"
+                        (keyup.enter)="sendMessage()">
+        </ion-textarea>
 
         <ion-buttons end>
-            <button (click)="sendMessage()">
-            <ion-icon name="md-send" style="font-size : x-large;"></ion-icon>
-          </button>
+            <button (click)="sendMessage()" [disabled]="!textToPublish" style="border-radius:5px">
+                <ion-icon name="md-send" style="font-size : x-large; color : cornflowerblue; "></ion-icon>
+            </button>
         </ion-buttons>
         
     </ion-toolbar>

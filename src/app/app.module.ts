@@ -26,6 +26,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 
 import { AuthService } from '../providers/auth-service';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { AutoresizeDirective } from '../directives/autoresize.directive';
 
 
 /*YOU HAVE TO PUT YOUR APIKEY FROM YOUR FIREBASE COUNT*/
@@ -62,6 +63,7 @@ const cloudSettings: CloudSettings = {
   declarations: [
     MyApp,
     ChatsPage,
+    AutoresizeDirective,
     ProfilePage,
     JobsPage,
     MyJobsPage,
