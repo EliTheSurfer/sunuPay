@@ -82,7 +82,7 @@ export class ChatDetailsPage  implements AfterViewChecked{
     //On marque les messages comme 'lu'
       this.ref.orderByValue().on('value', function(data: any) {
         data.forEach(function(snap: any) {
-          //Si l'envoyeur du message n'est pas moi et qu'il n'est pas marqué lu
+          //Si l'envoyeur du message n'est pas moi et qu'il n'est pas marqué lu et que cette page est active
             if(snap.val().envoyeurId  !=  instance.currentUserInformation.userId  && snap.val().etat != 'lu' && instance.navCtrl.getActive().name ==='ChatDetailsPage' && instance.active == true){
               console.log("receiver : "+ receiverId);       
               console.log("chat id : " + instance.chatId);       
@@ -107,6 +107,7 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.messageToSend.setEnvoyeurNomComplet(this.sender.prenoms+ " "+ this.sender.nom);
     this.messageToSend.setEtat("envoyé");
     this.conversationReference.push(this.messageToSend);
+    document.getElementById('chat-textarea').focus(); // The keyboard remains open    
     this.textToPublish="";    
 
     
@@ -121,5 +122,8 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
 }
   
+focusInput(input) {
+  input.setFocus();
+}
 
 }

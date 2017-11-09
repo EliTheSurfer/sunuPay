@@ -82,7 +82,8 @@
 
 
     <ion-toolbar>
-        <ion-textarea autoresize="100"
+        <ion-textarea   #chatTextarea
+                        autoresize="100"
                         placeholder="message..."
                         autofocus
                         spellcheck="on" 
@@ -95,7 +96,7 @@
         </ion-textarea>
 
         <ion-buttons end>
-            <button (click)="sendMessage()" [disabled]="!textToPublish" style="border-radius:5px">
+            <button (click)="sendMessage();focusInput(chatTextarea)" [disabled]="!textToPublish" style="border-radius:5px">
                 <ion-icon name="md-send" style="font-size : x-large; color : cornflowerblue; "></ion-icon>
             </button>
         </ion-buttons>
