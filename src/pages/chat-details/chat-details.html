@@ -35,6 +35,7 @@
 
                     <ion-col col-10>
                             <!-- item 2 -->
+
                             <ion-card style="border-radius : 25px;" >
 
                                 
@@ -44,10 +45,11 @@
                             </ion-card> 
 
                             <div style="text-align :end; margin-right: 18px;">
-                                 <ion-note >{{message.date}} . {{message.etat}}</ion-note>
+                                 <ion-note >{{message.date}} </ion-note>
+                                 <ion-note *ngIf="message.recepteurId === receiver.id" [ngStyle]="{'color':message.etat === 'envoyé' ? 'blue' : 'green' }" >. {{message.etat}}</ion-note>
                             </div>
                             
-                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
+                            <a class="item item-icon-right" style="text-align: end; color : green" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
                                 <ion-icon  name="ios-done-all" ></ion-icon>                                    
                             </a>
                             <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé' && message.recepteurId === receiver.id">
@@ -82,14 +84,14 @@
     <ion-toolbar>
         <ion-textarea autoresize="100"
                         placeholder="message..."
+                        autofocus
                         spellcheck="on" 
                         autocomplete="true" 
                         (ngModelChange)="tagMessages('clavier')"
                         [(ngModel)]="textToPublish" 
                         style="border-radius: 7px; background-color: white;
                         border: solid;
-                        border-color: cornflowerblue;"
-                        (keyup.enter)="sendMessage()">
+                        border-color: cornflowerblue;">
         </ion-textarea>
 
         <ion-buttons end>
