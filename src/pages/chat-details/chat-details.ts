@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
 })
 
 
-export class ChatDetailsPage  implements AfterViewChecked, OnInit{
+export class ChatDetailsPage  implements AfterViewChecked{
 
   ngAfterViewChecked(): void {
     //Aller au message le plus recent directement
@@ -59,15 +59,6 @@ export class ChatDetailsPage  implements AfterViewChecked, OnInit{
 
   }
 
-  ngOnInit() {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    //Si les messages sont chargés on les marque comme lu
-    console.log(this.sender.id);
-    this.tagMessages(this.sender.id);
-    
-    
-  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
