@@ -34,6 +34,7 @@ export class ChatDetailsPage  implements AfterViewChecked, OnInit{
   sender : any;
   receiver : any;
   ref : any;
+  active :boolean;
   
 
   
@@ -62,29 +63,40 @@ export class ChatDetailsPage  implements AfterViewChecked, OnInit{
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     //Si les messages sont chargés on les marque comme lu
-    this.tagMessages('constructeur');
+    console.log(this.sender.id);
+    this.tagMessages(this.sender.id);
     
     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatDetailsPage');
-        
+    this.active = true;    
+    this.tagMessages(this.sender.id);
     
+    
+  }
+
+  ionViewDidLeave() {
+    this.active = false;        
   }
 
   /**
    * fonction qui permet marquer les messages comme etant lus
    * @param message message de log
    */
-  tagMessages(message : string ){
+  tagMessages(receiverId : string ){
 
     let instance = this;
     //On marque les messages comme 'lu'
       this.ref.orderByValue().on('value', function(data: any) {
         data.forEach(function(snap: any) {
-            if(snap.val().envoyeurId  !=  instance.currentUserInformation.userId  && snap.val().etat != 'lu' && instance.navCtrl.getActive().name ==='ChatDetailsPage'){
-              console.log(snap.val().envoyeurId + " " +snap.val().message );
+          //Si l'envoyeur du message n'est pas moi et qu'il n'est pas marqué lu
+            if(snap.val().envoyeurId  !=  instance.currentUserInformation.userId  && snap.val().etat != 'lu' && instance.navCtrl.getActive().name ==='ChatDetailsPage' && instance.active == true){
+              console.log("receiver : "+ receiverId);       
+              console.log("chat id : " + instance.chatId);       
+              console.log("receiver : " +instance.chatId.indexOf(receiverId) + " chatId : "+instance.chatId+ " receiver : "+receiverId);
+              console.log("sender  : "+snap.val().envoyeurId + " " +snap.val().message );
               instance.conversationReference.update(snap.getKey(),{etat : 'lu'});            
             }
         });
