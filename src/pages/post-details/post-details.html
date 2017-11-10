@@ -15,11 +15,23 @@
 
 <ion-content padding style="background-color : ghostwhite;">
   <ion-card>  
+      <ion-textarea   id="post-textarea"
+            #postTextarea
+            autoresize="100"
+            placeholder="Quoi de neuf ?"
+            autofocus
+            spellcheck="on" 
+            autocomplete="true" 
+            [(ngModel)]="commentaire" 
+            style="border-radius: 7px; background-color: white;
+            border: solid; 
+            border-color: cornflowerblue;">
+      </ion-textarea>
       <ion-textarea placeholder="Quoi de neuf ?"  [(ngModel)]="textToPublish"></ion-textarea>
  </ion-card>
 
   <div text-center>
-   <button ion-button  (click)="publish()"   round color="secondary" [disabled]="textToPublish.length == 0">envoyer</button>
+   <button ion-button  (click)="publish();focusInput(postTextarea)"   round color="secondary" [disabled]="textToPublish.length == 0">envoyer</button>
   </div>
 </ion-content>
 

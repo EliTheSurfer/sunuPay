@@ -12,12 +12,33 @@
 
 <ion-content padding style="background-color:ghostwhite;">
 
-    <ion-fab top right edge (click)="goToPost()">
+    <ion-fab  top right edge (click)="postBoxIsVisible = !postBoxIsVisible">
         <button ion-fab mini color="secondary"><ion-icon name="md-send"></ion-icon></button>
       </ion-fab>
-  
+    <ion-list>
 
-  <ion-list>
+      <ion-card  style="border-radius: 5px;background-color: ghostwhite;" *ngIf="postBoxIsVisible == true">
+
+        <ion-card-content style=" padding-bottom: 5px;  padding-top: 5px; padding-left: 5px;padding-right: 5px;">
+            <ion-textarea   id="post-textarea"
+                  #postTextarea
+                  autoresize="100"
+                  placeholder="Quoi de neuf ?"
+                  autofocus
+                  spellcheck="on" 
+                  autocomplete="true" 
+                  [(ngModel)]="textToPublish" 
+                  style="border-radius: 7px; background-color: white;
+                  border: solid; 
+                  border-color: cornflowerblue;">
+            </ion-textarea>
+            <button  ion-button  col-12  style="height : 35px;" [disabled]="!textToPublish" (click)="postBoxIsVisible = false;publish(); ">publier</button>        
+            
+        </ion-card-content>
+      </ion-card>
+
+
+      
       <ion-card class="text cards-job" *ngFor="let post of (timeline | async)?.reverse()">
       <ion-item>
         <ion-avatar item-left>

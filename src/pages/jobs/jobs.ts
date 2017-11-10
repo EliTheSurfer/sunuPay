@@ -1,3 +1,4 @@
+import { PostModel } from './../../models/postModel';
 import { userInformationService } from './../../providers/userInformation-service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -22,6 +23,18 @@ export class JobsPage {
   currentUserInformations : FirebaseObjectObservable <any[]>;
   
   userLogin : any;
+
+  
+  textToPublish : string;
+  
+
+  //données d'un post
+  commentaire : string;
+  date : Date;
+  nom : string;
+  prenoms : string;
+  photo : string;
+  model : PostModel;
   
 
   constructor(private currentUserInformation : userInformationService,public navCtrl: NavController,public af: AngularFire,private _auth: AuthService) {
@@ -40,6 +53,32 @@ export class JobsPage {
     this.currentUserInformations = af.database.object('/consultants/'+this.userId,  { preserveSnapshot: true });
     console.log(this.currentUserInformations.subscribe(snapshot => {    console.log(snapshot.values)
     }));
+
+    //
+
+    //Iniatialisation du modele de post
+    this.model = new PostModel();
+    this.textToPublish ="";
+
+    //Recupererons l'id de l'utilisateur actuel 
+    this.userLogin = firebase.auth().currentUser.email;    
+    this.userId = this.userLogin.split("@")[0].replace(".","");
+    
+    //Recuperons les informations de l'utilisateur actuel
+    let instance = this;
+    let consultant = firebase.database().ref('/consultants/'+this.userId);
+    consultant.once("value")
+              .then(function(snapshot) {
+                   instance.nom = snapshot.child("nom").val();
+                   instance.prenoms = snapshot.child("prenoms").val();
+                   instance.photo = snapshot.child("photoDeProfil").val();
+    });
+
+    //connexion a la timeline
+     this.timeline = af.database.list('timeline');
+   
+
+
   }
 
   goToPost() {
@@ -81,6 +120,28 @@ export class JobsPage {
     } 
     
   }
+
+  /**
+   * Publier un statut
+   */
+  publish(){
+    
+        //On recupere les informations du post a envoyer
+        this.model.setNom(this.nom);
+        this.model.setPhoto(this.photo);
+        this.model.setPrenoms(this.prenoms);
+        this.model.setCommentNumber(0);
+        this.model.setLikeNumber(0);
+        this.model.setDate(new Date().toLocaleString());
+        this.model.setText(this.textToPublish);
+        this.model.setLikersList("");
+    
+    
+        //On envoie le post
+        this.timeline.push(this.model);
+        this.textToPublish ="";    
+        
+      }
 
 
 

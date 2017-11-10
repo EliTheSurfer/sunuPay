@@ -69,6 +69,8 @@ export class PostDetailsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostDetailsPage');
+    this.focusInput('chatTextarea');
+
   }
 
   publish(){
@@ -90,6 +92,10 @@ export class PostDetailsPage {
     this.navCtrl.push(JobsPage);
 
     
+  }
+
+  focusInput(input) {
+    input.setFocus();
   }
 
 }
