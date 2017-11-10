@@ -120,10 +120,10 @@ export class ChatDetailsPage  implements AfterViewChecked{
   scrollToBottom(): void {
     // method used to enable scrolling
     this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-}
-  
-focusInput(input) {
-  input.setFocus();
-}
+  } 
+    
+  focusInput(input) {
+    input.setFocus();
+  }
 
 }
