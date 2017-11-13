@@ -5,105 +5,107 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>{{receiver.prenoms}}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-
-
-
-<ion-content>
-
-
-    <div #scrollMe id="messages-container" style="overflow: auto; height: 100%;">
         
-        <ion-list >
-            <div class="text cards-job" *ngFor="let message of conversationReference | async ">
-
-                <ion-row>
-                    <ion-col style="padding-top : 20px" col-2 *ngIf="message.recepteurId === sender.id">
-                                <!-- item 1 -->
-                                <ion-avatar item-left>                        
-                                        <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
-                                </ion-avatar>
-                    </ion-col>         
-                    
-
-                    <ion-col col-10>
-                            <!-- item 2 -->
-
-                            <ion-card style="border-radius : 25px;" >
-
-                                
-                            <ion-card-content [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">
-                                    <p>{{message.message}}</p>
-                            </ion-card-content>
-                            </ion-card> 
-
-                            <div style="text-align :end; margin-right: 18px;">
-                                 <ion-note >{{message.date}} </ion-note>
-                                 <ion-note *ngIf="message.recepteurId === receiver.id" [ngStyle]="{'color':message.etat === 'envoyé' ? 'blue' : 'green' }" >. {{message.etat}}</ion-note>
-                            </div>
-                            
-                            <a class="item item-icon-right" style="text-align: end; color : green" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
-                                <ion-icon  name="ios-done-all" ></ion-icon>                                    
-                            </a>
-                            <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé' && message.recepteurId === receiver.id">
-                                <ion-icon  name="ios-checkmark" ></ion-icon>                                    
-                            </a>
-                            
-                    </ion-col>
-
-
-                    <ion-col style="padding-top : 15px" col-2 *ngIf="message.recepteurId === receiver.id">
-                            <!-- item 1 -->
-                            <ion-avatar item-left>                        
-                                    <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
-                            </ion-avatar>
-                     </ion-col>  
-                     
-                     
-   
-
-                </ion-row>
-            </div>
-        </ion-list>
-    </div>   
-    
-</ion-content>
-
-
-<ion-footer>
-
-    <ion-toolbar>
-        <ion-textarea   id="chat-textarea"
-                        #chatTextarea
-                        autoresize="100"
-                        placeholder="message..."
-                        autofocus
-                        spellcheck="on" 
-                        autocomplete="true" 
-                        (ngModelChange)="tagMessages(receiver.id)"
-                        [(ngModel)]="textToPublish" 
-                        style="border-radius: 7px; background-color: white;
-                        border: solid;    height: 42px;
-                        border-color: cornflowerblue;">
-        </ion-textarea>
-
-        <ion-buttons end>
-            <button (click)="sendMessage();focusInput(chatTextarea)" [disabled]="!textToPublish" style="border-radius:5px">
-                <ion-icon name="md-send" style="font-size : x-large; color : cornflowerblue; "></ion-icon>
-            </button>
-        </ion-buttons>
+          <ion-navbar>
+            <ion-title>{{receiver.prenoms}}</ion-title>
+          </ion-navbar>
         
-    </ion-toolbar>
-
-
-</ion-footer>
-
-
-
+        </ion-header>
+        
+        
+        
+        
+        
+        <ion-content>
+        
+        
+            <div #scrollMe id="messages-container" style="overflow: auto; height: 100%;">
+                
+                <ion-list >
+                    <div class="text cards-job" *ngFor="let message of conversationReference | async ">
+        
+                        <ion-row>
+                            <ion-col style="padding-top : 20px" col-2 *ngIf="message.recepteurId === sender.id">
+                                        <!-- item 1 -->
+                                        <ion-avatar item-left>                        
+                                                <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
+                                        </ion-avatar>
+                            </ion-col>         
+                            
+        
+                            <ion-col col-10>
+                                    <!-- item 2 -->
+        
+                                    <ion-card style="border-radius : 25px;" >
+        
+                                        
+                                    <ion-card-content [ngStyle]="{'background-color':message.recepteurId === sender.id ? 'lightgrey' : 'powderblue' }">
+                                            <p>{{message.message}}</p>
+                                    </ion-card-content>
+                                    </ion-card> 
+        
+                                    <div style="text-align :end; margin-right: 18px;">
+                                         <ion-note >{{message.date}} </ion-note>
+                                         <ion-note *ngIf="message.recepteurId === receiver.id" [ngStyle]="{'color':message.etat === 'envoyé' ? 'blue' : 'green' }" >. {{message.etat}}</ion-note>
+                                    </div>
+                                    
+                                    <a class="item item-icon-right" style="text-align: end; color : green" *ngIf="message.etat === 'lu' && message.recepteurId === receiver.id">
+                                        <ion-icon  name="ios-done-all" ></ion-icon>                                    
+                                    </a>
+                                    <a class="item item-icon-right" style="text-align: end;" *ngIf="message.etat === 'envoyé' && message.recepteurId === receiver.id">
+                                        <ion-icon  name="ios-checkmark" ></ion-icon>                                    
+                                    </a>
+                                    
+                            </ion-col>
+        
+        
+                            <ion-col style="padding-top : 15px" col-2 *ngIf="message.recepteurId === receiver.id">
+                                    <!-- item 1 -->
+                                    <ion-avatar item-left>                        
+                                            <img src="{{message.photoDeProfil}}" style="border-radius: 50%;width: 50px;height: 50px; ">
+                                    </ion-avatar>
+                             </ion-col>  
+                             
+                             
+           
+        
+                        </ion-row>
+                    </div>
+                </ion-list>
+            </div>   
+            
+        </ion-content>
+        
+        
+        <ion-footer>
+        
+        
+        
+            <ion-toolbar>
+                <ion-textarea   id="chat-textarea"
+                                #chatTextarea
+                                autoresize="100"
+                                placeholder="message..."
+                                autofocus
+                                spellcheck="on" 
+                                autocomplete="true" 
+                                (ngModelChange)="tagMessages(receiver.id)"
+                                [(ngModel)]="textToPublish" 
+                                style="border-radius: 7px; background-color: white;
+                                border: solid;
+                                border-color: cornflowerblue;">
+                </ion-textarea>
+        
+                <ion-buttons end>
+                    <button (click)="sendMessage();focusInput(chatTextarea)" [disabled]="!textToPublish" style="border-radius:5px">
+                        <ion-icon name="md-send" style="font-size : x-large; color : cornflowerblue; "></ion-icon>
+                    </button>
+                </ion-buttons>
+                
+            </ion-toolbar>
+        
+        
+        </ion-footer>
+        
+        
+        
