@@ -12,7 +12,7 @@
 
 <ion-content padding style="background-color:ghostwhite;">
 
-    <ion-fab  top right edge (click)="postBoxIsVisible = !postBoxIsVisible">
+    <ion-fab  top right edge (click)="postBoxIsVisible = !postBoxIsVisible;">
         <button ion-fab mini color="secondary"><ion-icon name="md-send"></ion-icon></button>
       </ion-fab>
     <ion-list>
@@ -69,7 +69,7 @@
           </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left clear small color="danger">
+          <button (click)="goToCommentDetails(post)" ion-button icon-left clear small color="danger">
             <ion-icon name="text" id="icon-eye"></ion-icon>
             <div>{{post.commentaire}} commentaires</div>
           </button>

@@ -1,3 +1,4 @@
+import { CommentDetailsPage } from './../pages/comment-details/comment-details';
 import { userInformationService } from './../providers/userInformation-service';
 import { ChatIdProviderService } from './../providers/chatIdProvider-service';
 import { ChatDetailsPage } from './../pages/chat-details/chat-details';
@@ -72,6 +73,7 @@ const cloudSettings: CloudSettings = {
     ConsultantPipe,
     TabsPage,
     ProfileDetailsPage,
+    CommentDetailsPage,
     ChatDetailsPage,
     PostDetailsPage
   ],
@@ -102,6 +104,7 @@ const cloudSettings: CloudSettings = {
     SignUpPage,
     ProfileDetailsPage,
     TabsPage,
+    CommentDetailsPage,
     ChatDetailsPage,
     PostDetailsPage
   ],

@@ -10,6 +10,7 @@ import { PostDetailsPage } from '../post-details/post-details'
 import * as firebase from 'firebase';
 
 import { LoginPage } from '../login/login';
+import { CommentDetailsPage } from '../comment-details/comment-details';
 
 @Component({
   selector: 'page-home',
@@ -141,7 +142,18 @@ export class JobsPage {
         this.timeline.push(this.model);
         this.textToPublish ="";    
         
-      }
+  }
+
+  /**
+   * Fonction qui permet d'aller dans la page de details du post sur lequel on a cliqué
+   * @param ClickedPost : postModel 
+   */
+  goToCommentDetails(ClickedPost : any){
+    this.navCtrl.push(CommentDetailsPage,{
+      post: ClickedPost,
+    } );
+  }
+  
 
 
 
