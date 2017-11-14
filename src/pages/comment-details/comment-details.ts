@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Firebase } from 'ionic-native';
+import { FirebaseListObservable, AngularFire } from 'angularfire2';
 
 /**
  * Generated class for the CommentDetailsPage page.
@@ -14,7 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CommentDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //Le post que l'on veut commenter
+  clickedPost : any;
+  //La liste des commentaires du post
+  currentCommentList : FirebaseListObservable<any[]>;;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public af: AngularFire) {
+    //Recuperation des informations du post
+    this.clickedPost = navParams.get("post");
+    //indexation des commentaires
+    this.currentCommentList  = af.database.list('/timeline/'+this.clickedPost.$key+'/commentairesList'); 
+
   }
 
   ionViewDidLoad() {

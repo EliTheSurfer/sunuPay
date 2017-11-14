@@ -14,5 +14,30 @@
 
 
 <ion-content padding>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{clickedPost.photoDeProfil}}">
+      </ion-avatar>
+      <h2>{{clickedPost.prenoms}}  {{clickedPost.nom}}</h2>
+      <p>Posté le : {{clickedPost.date}}</p>
+    </ion-item>
+
+
+    <ion-card-content>
+      <p>{{clickedPost.texte}}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+      
+  <ion-item *ngFor="let comment of  currentCommentList  | async"  style="    padding-left: 20px;padding-right: 40px;">
+      <ion-thumbnail item-left>
+        <img src={{comment.photoDeProfil}} style="border-radius: 50%;">
+      </ion-thumbnail>
+      <ion-note>{{comment.displayName}}</ion-note>
+      <p style="color : black ">{{comment.text}}</p>
+  </ion-item>
 
 </ion-content>

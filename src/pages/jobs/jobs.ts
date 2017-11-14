@@ -149,8 +149,9 @@ export class JobsPage {
    * @param ClickedPost : postModel 
    */
   goToCommentDetails(ClickedPost : any){
+    console.log(ClickedPost);
     this.navCtrl.push(CommentDetailsPage,{
-      post: ClickedPost,
+      post: ClickedPost
     } );
   }
   
