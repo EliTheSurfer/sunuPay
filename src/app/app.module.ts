@@ -73,7 +73,7 @@ const cloudSettings: CloudSettings = {
     ConsultantPipe,
     TabsPage,
     ProfileDetailsPage,
-    CommentDetailsPage,
+    //CommentDetailsPage,
     ChatDetailsPage,
     PostDetailsPage
   ],
@@ -104,7 +104,7 @@ const cloudSettings: CloudSettings = {
     SignUpPage,
     ProfileDetailsPage,
     TabsPage,
-    CommentDetailsPage,
+    //CommentDetailsPage,
     ChatDetailsPage,
     PostDetailsPage
   ],

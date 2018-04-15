@@ -69,6 +69,7 @@ export class ChatDetailsPage  implements AfterViewChecked{
   }
 
   ionViewDidLeave() {
+    //Quand on quitte la page on desactive les tags
     this.active = false;        
   }
 
@@ -122,6 +123,9 @@ export class ChatDetailsPage  implements AfterViewChecked{
     this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
   } 
     
+  /**
+   * focus sur un element
+   */
   focusInput(input) {
     input.setFocus();
   }

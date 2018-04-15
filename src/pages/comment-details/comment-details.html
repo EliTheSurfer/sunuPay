@@ -41,3 +41,30 @@
   </ion-item>
 
 </ion-content>
+
+<ion-footer>
+    
+        <ion-toolbar>
+            <ion-textarea   id="comment-textarea"
+                            #commentTextarea
+                            autoresize="100"
+                            placeholder="Commentaire..."
+                            autofocus
+                            spellcheck="on" 
+                            autocomplete="true" 
+                            [(ngModel)]="commentToPublish" 
+                            style="border-radius: 7px; background-color: white;
+                            border: solid;
+                            border-color: cornflowerblue;">
+            </ion-textarea>
+    
+            <ion-buttons end>
+                <button (click)="publishComment();" [disabled]="!commentToPublish" style="border-radius:5px">
+                    <ion-icon name="md-send" style="font-size : x-large; color : cornflowerblue; "></ion-icon>
+                </button>
+            </ion-buttons>
+            
+        </ion-toolbar>
+    
+</ion-footer>
+

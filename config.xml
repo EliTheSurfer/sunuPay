@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.findjob486787" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Neolynker</name>
-    <description>Neolynker App</description>
+    <name>SunuPay</name>
+    <description>SunuPay App</description>
     <author email="e.garate@gmail.com" href="http://ionicframework.com/">XGM Team</author>
     <content src="index.html" />
     <access origin="*" />
